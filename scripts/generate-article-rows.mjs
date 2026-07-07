@@ -112,6 +112,11 @@ const rows = records.map((record, index) => {
     itemTypes: splitList(requireValue(values, "itemTypes", rowNumber)),
     affiliatePriority: splitList(requireValue(values, "affiliatePriority", rowNumber)),
     sourceStatus: requireValue(values, "status", rowNumber),
+    imagePath:
+      values.imagePath?.trim() || `/images/articles/${requireValue(values, "slug", rowNumber)}.png`,
+    imageAlt:
+      values.imageAlt?.trim() ||
+      `${requireValue(values, "title", rowNumber)}のコーディネート参考画像`,
     memo: values.memo?.trim() || "",
   };
 });

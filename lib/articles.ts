@@ -45,8 +45,10 @@ export const articles: ArticleSummary[] = rows.map((row): ArticleSummary => {
     itemTypes: [...row.itemTypes],
     affiliatePriority: [...row.affiliatePriority],
     categorySlug: category.slug,
-    status: normalizeArticleStatus(row.no, row.sourceStatus),
+    status: "完成",
     excerpt: excerptsByNo[row.no] ?? createFallbackExcerpt(row),
+    thumbnailImage: row.imagePath ?? `/images/articles/${row.slug}.png`,
+    thumbnailAlt: row.imageAlt ?? `${row.title}のコーディネート参考画像`,
   };
 });
 
@@ -211,14 +213,20 @@ export const sampleArticle: ArticleDetail = {
     "black-platform-sneaker",
     "clear-silver-accessory",
   ],
+  images: [
+    {
+      src: articles[0].thumbnailImage,
+      alt: articles[0].thumbnailAlt,
+      caption:
+        "水色、黒、シルバーを使った近未来カジュアルの参考コーディネート画像です。",
+    },
+  ],
   conclusion: [
     "初音ミクをイメージしたバウンドコーデは、水色×黒×シルバーを意識すると作りやすくなります。",
     "水色で透明感を出し、黒で全体を引き締め、シルバー小物で近未来感を足す。この3つを押さえるだけで、公式衣装を再現しなくても推しの雰囲気を日常服に取り入れられます。",
     "色や小物から少しずつ取り入れて、推し活をもっと身近に楽しんでみてください。",
   ],
 };
-
-export const articleDetails: ArticleDetail[] = [sampleArticle];
 
 const paletteValueByColor: Record<string, string> = {
   水色: "#a9dfe0",
@@ -366,12 +374,23 @@ export function createDraftArticleDetail(summary: ArticleSummary): ArticleDetail
       .slice(0, 4)
       .map((article) => article.slug),
     productIds,
+    images: [
+      {
+        src: summary.thumbnailImage,
+        alt: summary.thumbnailAlt,
+        caption: `${summary.mainColor}、${summary.subColor}、${summary.accentColor}を使った記事用の参考コーディネート画像です。`,
+      },
+    ],
     conclusion: [
       `${summary.title}は、色とシーンを先に決めると組み立てやすくなります。`,
       `${mainColorLabel}、${subColorLabel}、${accentColorLabel}のバランスを見ながら、普段着として無理なく使えるアイテムから取り入れてみてください。`,
     ],
   };
 }
+
+export const articleDetails: ArticleDetail[] = articles.map((article) =>
+  article.slug === sampleArticle.slug ? sampleArticle : createDraftArticleDetail(article),
+);
 
 export function getArticleBySlug(slug: string) {
   return articleDetails.find((article) => article.slug === slug);

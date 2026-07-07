@@ -9,9 +9,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SiteShell } from "@/components/SiteShell";
 import {
-  articleDetails,
   articles,
-  createDraftArticleDetail,
   getArticleBySlug,
   getArticleSummaryBySlug,
   getRelatedArticles,
@@ -47,10 +45,13 @@ export default async function ArticlePage({
     notFound();
   }
 
-  const detail = getArticleBySlug(slug) ?? createDraftArticleDetail(summary);
+  const detail = getArticleBySlug(slug);
+  if (!detail) {
+    notFound();
+  }
   const related = getRelatedArticles(detail.relatedSlugs);
   const products = getProductsByIds(detail.productIds);
-  const hasFullDetail = articleDetails.some((article) => article.slug === slug);
+  const mainImage = detail.images[0];
 
   return (
     <SiteShell>
@@ -94,12 +95,6 @@ export default async function ArticlePage({
               <DisclosureNotice />
             </div>
 
-            {!hasFullDetail ? (
-              <div className="mt-6 rounded-[8px] border border-[#f0d3d8] bg-[#fff7f8] p-4 text-sm font-bold leading-7 text-[#8a4550]">
-                この記事は初期CSVから生成した仮ページです。詳細本文はサンプル記事の構成をもとに表示しています。
-              </div>
-            ) : null}
-
             <div className="article-body mt-8 text-base font-medium text-[#1d3337]">
               {detail.introduction.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
@@ -127,21 +122,23 @@ export default async function ArticlePage({
               <SectionHeading number="02" title="イラストで見るコーデ" />
               <div className="space-y-4">
                 <IllustrationNotice />
-                <OutfitIllustration />
+                <OutfitIllustration image={mainImage} />
               </div>
             </section>
 
-            <section className="mt-10">
-              <SectionHeading number="03" title="おすすめアイテム" />
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-                {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-              <p className="mt-3 text-center text-xs font-bold text-[#8a989b]">
-                商品データは仮データです。実運用では公式アフィリエイト素材を無加工で表示します。
-              </p>
-            </section>
+            {products.length > 0 ? (
+              <section className="mt-10">
+                <SectionHeading number="03" title="おすすめアイテム" />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                  {products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+                <p className="mt-3 text-center text-xs font-bold text-[#8a989b]">
+                  商品データは仮データです。実運用では公式アフィリエイト素材を無加工で表示します。
+                </p>
+              </section>
+            ) : null}
 
             <section className="mt-10">
               <SectionHeading number="04" title="アイテム構成" />

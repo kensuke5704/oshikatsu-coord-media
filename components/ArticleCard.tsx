@@ -1,20 +1,11 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
+import Image from "next/image";
 import type { ArticleSummary } from "@/lib/types";
 
-const colorMap: Record<string, string> = {
-  水色: "#a9dfe0",
-  黒: "#2b2928",
-  白: "#ffffff",
-  シルバー: "#d8d8d5",
-  複数: "#d9c3c8",
-};
-
-function articlePalette(article: ArticleSummary) {
-  return [article.mainColor, article.subColor, article.accentColor].map(
-    (color) => colorMap[color] ?? "#d9c3c8",
-  );
-}
+const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
+const basePath =
+  process.env.NEXT_PUBLIC_BASE_PATH ??
+  (process.env.GITHUB_ACTIONS === "true" && repositoryName !== "" ? `/${repositoryName}` : "");
 
 export function ArticleCard({
   article,
@@ -23,8 +14,6 @@ export function ArticleCard({
   article: ArticleSummary;
   priority?: boolean;
 }) {
-  const [mainColor, subColor, accentColor] = articlePalette(article);
-
   return (
     <article
       className={`group media-card fade-up flex h-full flex-col overflow-hidden rounded-[8px] bg-white ${
@@ -33,18 +22,20 @@ export function ArticleCard({
     >
       <Link
         href={`/articles/${article.slug}`}
-        className={`article-visual relative block overflow-hidden ${
+        className={`relative block overflow-hidden bg-[#f4eeeb] ${
           priority ? "min-h-[340px] md:min-h-full" : "aspect-[4/3]"
         }`}
-        style={
-          {
-            "--visual-main": mainColor,
-            "--visual-sub": subColor,
-            "--visual-accent": accentColor,
-          } as CSSProperties
-        }
         aria-label={article.title}
       >
+        <Image
+          src={`${basePath}${article.thumbnailImage}`}
+          alt={article.thumbnailAlt}
+          fill
+          sizes={priority ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
+          className="object-cover transition duration-500 group-hover:scale-[1.03]"
+          priority={priority}
+        />
+        <span className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-transparent" />
         <span className="absolute left-5 top-5 rounded-full bg-white/88 px-3 py-1 text-[11px] font-medium text-[#6b514a] shadow-[0_8px_24px_rgba(65,45,38,0.08)]">
           {article.category}
         </span>

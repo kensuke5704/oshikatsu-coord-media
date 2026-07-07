@@ -27,7 +27,13 @@ export type Category = {
   description: string;
 };
 
-export type ArticleStatus = "sample" | "初期記事" | "未着手";
+export type ArticleStatus = "sample" | "初期記事" | "未着手" | "完成";
+
+export type ArticleImage = {
+  src: string;
+  alt: string;
+  caption: string;
+};
 
 export type ArticleSummary = {
   no: number;
@@ -47,10 +53,17 @@ export type ArticleSummary = {
   status: ArticleStatus;
   memo: string;
   excerpt: string;
+  thumbnailImage: string;
+  thumbnailAlt: string;
 };
 
-export type ArticleSeed = Omit<ArticleSummary, "categorySlug" | "status" | "excerpt"> & {
+export type ArticleSeed = Omit<
+  ArticleSummary,
+  "categorySlug" | "status" | "excerpt" | "thumbnailImage" | "thumbnailAlt"
+> & {
   sourceStatus: string;
+  imagePath?: string;
+  imageAlt?: string;
 };
 
 export type ProductStatus = "mock" | "active" | "paused";
@@ -102,5 +115,6 @@ export type ArticleDetail = ArticleSummary & {
   ngPoints: string[];
   relatedSlugs: string[];
   productIds: string[];
+  images: ArticleImage[];
   conclusion: string[];
 };

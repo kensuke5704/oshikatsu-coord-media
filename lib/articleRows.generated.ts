@@ -40,6 +40,8 @@ export const articleRows = [
       "Amazon"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/hatsune-miku-bound-coordinate.png",
+    "imageAlt": "初音ミクをイメージしたバウンドコーデ｜水色×黒で作る近未来カジュアルのコーディネート参考画像",
     "memo": "推し別記事の基準サンプル。公式衣装や本人再現ではなく、水色×黒×シルバーの雰囲気で日常服に落とし込む。"
   },
   {
@@ -75,6 +77,8 @@ export const articleRows = [
       "SHOPLIST"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/mint-blue-oshikatsu-coordinate.png",
+    "imageAlt": "水色の推し活コーデ｜透明感を出せる普段着アイテムの選び方のコーディネート参考画像",
     "memo": "初音ミク記事から内部リンクする推し色記事。水色推し全般に使える基礎記事にする。"
   },
   {
@@ -111,6 +115,8 @@ export const articleRows = [
       "SHOPLIST"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/black-oshikatsu-coordinate.png",
+    "imageAlt": "黒の推し活コーデ｜大人っぽく見せる差し色と小物の合わせ方のコーディネート参考画像",
     "memo": "黒推し・クール系キャラの記事に内部リンクできる汎用記事。重く見えすぎない合わせ方を説明する。"
   },
   {
@@ -148,6 +154,8 @@ export const articleRows = [
       "SHOPLIST"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/live-oshikatsu-coordinate.png",
+    "imageAlt": "ライブ参戦におすすめの推し活コーデ｜動きやすくて写真映えする服装ガイドのコーディネート参考画像",
     "memo": "購買意欲が高いシーン別記事。バッグ・靴・収納グッズまで商品導線を広げる。"
   },
   {
@@ -183,6 +191,8 @@ export const articleRows = [
       "Qoo10"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/collaboration-cafe-oshikatsu-coordinate.png",
+    "imageAlt": "コラボカフェに着ていきたい推し活コーデ｜浮かないのに写真映えする着こなしのコーディネート参考画像",
     "memo": "Instagram・Pinterest向きの記事。強い再現ではなく、席写真やグッズ写真に馴染む服装を提案する。"
   },
   {
@@ -216,6 +226,8 @@ export const articleRows = [
       "SHEIN"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/bound-coordinate-beginner-guide.png",
+    "imageAlt": "バウンドコーデとは？コスプレとの違いと始め方をわかりやすく解説のコーディネート参考画像",
     "memo": "サイト思想を伝える基礎記事。商品紹介は控えめにし、信頼形成を優先する。"
   },
   {
@@ -244,6 +256,8 @@ export const articleRows = [
       "なし"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/oshikatsu-coordinate-copyright-manners.png",
+    "imageAlt": "推し別コーデで気をつけたい著作権とマナー｜公式画像を使わず楽しむ方法のコーディネート参考画像",
     "memo": "固定ページにも近い信頼記事。公式画像・ロゴ・衣装再現・商品写真加工を避ける方針を説明する。"
   },
   {
@@ -277,6 +291,8 @@ export const articleRows = [
       "SHEIN"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/shein-oshikatsu-coordinate-guide.png",
+    "imageAlt": "SHEINで推し活コーデを探すコツ｜失敗しにくい検索ワードと選び方のコーディネート参考画像",
     "memo": "SHEIN送客用の記事。商品写真は無加工の公式素材・商品カードとして扱う前提で書く。"
   },
   {
@@ -311,6 +327,8 @@ export const articleRows = [
       "Qoo10"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/silver-bag-oshikatsu-coordinate.png",
+    "imageAlt": "推し活に使いやすいシルバーバッグ｜水色・黒・白コーデに合わせる小物選びのコーディネート参考画像",
     "memo": "初音ミク記事や水色・黒系記事から内部リンクしやすい商品記事。小物で推し感を足す提案にする。"
   },
   {
@@ -348,6 +366,8 @@ export const articleRows = [
       "SHOPLIST"
     ],
     "sourceStatus": "未着手",
+    "imagePath": "/images/articles/futuristic-cyber-oshikatsu-coordinate.png",
+    "imageAlt": "近未来・サイバー系の推し活コーデ｜水色×黒×シルバーで作る透明感スタイルのコーディネート参考画像",
     "memo": "初音ミク記事から横展開できるテイスト別記事。特定キャラに依存しないSEO・Pinterest向け記事にする。"
   }
 ] satisfies ArticleSeed[];

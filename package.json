@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "articles:sync": "node scripts/generate-article-rows.mjs",
-    "build": "npm run articles:sync && next build",
+    "images:articles": "node scripts/create-article-images.mjs",
+    "build": "npm run articles:sync && npm run images:articles && next build",
     "export": "npm run build",
     "start": "next start",
     "lint": "tsc --noEmit",
