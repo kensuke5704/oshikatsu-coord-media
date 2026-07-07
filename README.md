@@ -17,6 +17,24 @@ npm run build
 
 The static export is generated in `out/`.
 
+## Article CSV workflow
+
+Article list data is managed from the CSV.
+On this machine, `npm run articles:sync` reads the Google Drive CSV first and mirrors it to `data/INITIAL_ARTICLES.csv`.
+On GitHub Actions, it falls back to the committed `data/INITIAL_ARTICLES.csv`.
+
+```bash
+npm run articles:sync
+```
+
+You can also point to another CSV explicitly:
+
+```bash
+ARTICLE_CSV_PATH="/path/to/INITIAL_ARTICLES.csv" npm run articles:sync
+```
+
+Commit both the CSV and `lib/articleRows.generated.ts` so GitHub Pages can build without access to local Google Drive files.
+
 ## GitHub Pages
 
 This project includes `.github/workflows/pages.yml`.

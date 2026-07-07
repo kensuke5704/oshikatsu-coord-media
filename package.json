@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "export": "next build",
+    "articles:sync": "node scripts/generate-article-rows.mjs",
+    "build": "npm run articles:sync && next build",
+    "export": "npm run build",
     "start": "next start",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit"

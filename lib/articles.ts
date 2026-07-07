@@ -1,171 +1,6 @@
 import { getCategoryByName } from "./categories";
-import type { ArticleDetail, ArticleSummary, CategoryName, CategorySlug } from "./types";
-
-type ArticleSeed = Omit<ArticleSummary, "categorySlug" | "status" | "excerpt"> & {
-  category: CategoryName;
-};
-
-const rows = [
-  {
-    no: 1,
-    category: "推し別コーデ",
-    title:
-      "初音ミクをイメージしたバウンドコーデ｜水色×黒で作る近未来カジュアル",
-    slug: "hatsune-miku-bound-coordinate",
-    characterName: "初音ミク",
-    workName: "VOCALOID",
-    mainColor: "水色",
-    subColor: "黒",
-    accentColor: "シルバー",
-    moodKeywords: ["透明感", "近未来感", "軽やか", "クール"],
-    scenes: ["ライブ", "イベント", "コラボカフェ", "普段着"],
-    itemTypes: ["トップス", "スカート", "バッグ", "靴", "アクセサリー"],
-    affiliatePriority: ["SHEIN", "楽天", "Amazon"],
-    memo:
-      "推し別記事の基準サンプル。公式衣装や本人再現ではなく、水色×黒×シルバーの雰囲気で日常服に落とし込む。",
-  },
-  {
-    no: 2,
-    category: "推し色コーデ",
-    title: "水色の推し活コーデ｜透明感を出せる普段着アイテムの選び方",
-    slug: "mint-blue-oshikatsu-coordinate",
-    mainColor: "水色",
-    subColor: "白",
-    accentColor: "シルバー",
-    moodKeywords: ["透明感", "爽やか", "清楚", "軽やか"],
-    scenes: ["普段着", "ライブ", "コラボカフェ", "春夏"],
-    itemTypes: ["トップス", "スカート", "バッグ", "アクセサリー"],
-    affiliatePriority: ["SHEIN", "楽天", "Amazon", "SHOPLIST"],
-    memo:
-      "初音ミク記事から内部リンクする推し色記事。水色推し全般に使える基礎記事にする。",
-  },
-  {
-    no: 3,
-    category: "推し色コーデ",
-    title: "黒の推し活コーデ｜大人っぽく見せる差し色と小物の合わせ方",
-    slug: "black-oshikatsu-coordinate",
-    mainColor: "黒",
-    subColor: "白",
-    accentColor: "シルバー",
-    moodKeywords: ["クール", "大人っぽい", "モード", "引き締め"],
-    scenes: ["普段着", "イベント", "ライブ", "秋冬"],
-    itemTypes: ["トップス", "スカート", "パンツ", "靴", "バッグ"],
-    affiliatePriority: ["SHEIN", "楽天", "Amazon", "SHOPLIST"],
-    memo:
-      "黒推し・クール系キャラの記事に内部リンクできる汎用記事。重く見えすぎない合わせ方を説明する。",
-  },
-  {
-    no: 4,
-    category: "シーン別コーデ",
-    title:
-      "ライブ参戦におすすめの推し活コーデ｜動きやすくて写真映えする服装ガイド",
-    slug: "live-oshikatsu-coordinate",
-    mainColor: "複数",
-    subColor: "複数",
-    accentColor: "複数",
-    moodKeywords: ["動きやすい", "写真映え", "疲れにくい", "推し色"],
-    scenes: ["ライブ", "イベント", "遠征"],
-    itemTypes: ["トップス", "ボトムス", "バッグ", "靴", "アクセサリー", "収納グッズ"],
-    affiliatePriority: ["SHEIN", "楽天", "Amazon", "Yahoo", "SHOPLIST"],
-    memo:
-      "購買意欲が高いシーン別記事。バッグ・靴・収納グッズまで商品導線を広げる。",
-  },
-  {
-    no: 5,
-    category: "シーン別コーデ",
-    title:
-      "コラボカフェに着ていきたい推し活コーデ｜浮かないのに写真映えする着こなし",
-    slug: "collaboration-cafe-oshikatsu-coordinate",
-    mainColor: "複数",
-    subColor: "複数",
-    accentColor: "複数",
-    moodKeywords: ["写真映え", "上品", "さりげない", "カフェ向き"],
-    scenes: ["コラボカフェ", "推し会", "本人不在の誕生日会"],
-    itemTypes: ["ワンピース", "トップス", "スカート", "バッグ", "アクセサリー"],
-    affiliatePriority: ["SHEIN", "楽天", "Amazon", "Qoo10"],
-    memo:
-      "Instagram・Pinterest向きの記事。強い再現ではなく、席写真やグッズ写真に馴染む服装を提案する。",
-  },
-  {
-    no: 6,
-    category: "初心者向けノウハウ",
-    title: "バウンドコーデとは？コスプレとの違いと始め方をわかりやすく解説",
-    slug: "bound-coordinate-beginner-guide",
-    mainColor: "複数",
-    subColor: "複数",
-    accentColor: "複数",
-    moodKeywords: ["初心者向け", "日常服", "さりげない", "推し活を身近に"],
-    scenes: ["普段着", "イベント", "推し活初心者"],
-    itemTypes: ["トップス", "小物", "バッグ", "アクセサリー"],
-    affiliatePriority: ["楽天", "Amazon", "SHEIN"],
-    memo:
-      "サイト思想を伝える基礎記事。商品紹介は控えめにし、信頼形成を優先する。",
-  },
-  {
-    no: 7,
-    category: "ルール・マナー・著作権",
-    title:
-      "推し別コーデで気をつけたい著作権とマナー｜公式画像を使わず楽しむ方法",
-    slug: "oshikatsu-coordinate-copyright-manners",
-    mainColor: "複数",
-    subColor: "複数",
-    accentColor: "複数",
-    moodKeywords: ["非公式", "著作権", "マナー", "安心"],
-    scenes: ["サイト全体", "推し活初心者", "記事方針"],
-    itemTypes: ["なし"],
-    affiliatePriority: ["なし"],
-    memo:
-      "固定ページにも近い信頼記事。公式画像・ロゴ・衣装再現・商品写真加工を避ける方針を説明する。",
-  },
-  {
-    no: 8,
-    category: "EC・買い物ガイド",
-    title:
-      "SHEINで推し活コーデを探すコツ｜失敗しにくい検索ワードと選び方",
-    slug: "shein-oshikatsu-coordinate-guide",
-    mainColor: "複数",
-    subColor: "複数",
-    accentColor: "複数",
-    moodKeywords: ["プチプラ", "探し方", "サイズ感", "レビュー確認"],
-    scenes: ["普段着", "イベント", "ライブ", "推し会"],
-    itemTypes: ["トップス", "ボトムス", "バッグ", "靴", "アクセサリー"],
-    affiliatePriority: ["SHEIN"],
-    memo:
-      "SHEIN送客用の記事。商品写真は無加工の公式素材・商品カードとして扱う前提で書く。",
-  },
-  {
-    no: 9,
-    category: "アイテム別おすすめ",
-    title:
-      "推し活に使いやすいシルバーバッグ｜水色・黒・白コーデに合わせる小物選び",
-    slug: "silver-bag-oshikatsu-coordinate",
-    mainColor: "シルバー",
-    subColor: "水色",
-    accentColor: "黒",
-    moodKeywords: ["近未来感", "透明感", "アクセント", "大人っぽい"],
-    scenes: ["ライブ", "コラボカフェ", "普段着", "イベント"],
-    itemTypes: ["バッグ", "アクセサリー"],
-    affiliatePriority: ["SHEIN", "楽天", "Amazon", "Yahoo", "Qoo10"],
-    memo:
-      "初音ミク記事や水色・黒系記事から内部リンクしやすい商品記事。小物で推し感を足す提案にする。",
-  },
-  {
-    no: 10,
-    category: "テイスト別コーデ",
-    title:
-      "近未来・サイバー系の推し活コーデ｜水色×黒×シルバーで作る透明感スタイル",
-    slug: "futuristic-cyber-oshikatsu-coordinate",
-    mainColor: "水色",
-    subColor: "黒",
-    accentColor: "シルバー",
-    moodKeywords: ["近未来感", "サイバー", "透明感", "クール"],
-    scenes: ["ライブ", "イベント", "普段着", "撮影"],
-    itemTypes: ["トップス", "スカート", "パンツ", "バッグ", "靴", "アクセサリー"],
-    affiliatePriority: ["SHEIN", "楽天", "Amazon", "SHOPLIST"],
-    memo:
-      "初音ミク記事から横展開できるテイスト別記事。特定キャラに依存しないSEO・Pinterest向け記事にする。",
-  },
-] satisfies ArticleSeed[];
+import { articleRows as rows } from "./articleRows.generated";
+import type { ArticleDetail, ArticleStatus, ArticleSummary, CategorySlug } from "./types";
 
 const excerptsByNo: Record<number, string> = {
   1: "水色、黒、シルバーを軸に、透明感と近未来感を日常服へ置き換える非公式バウンドコーデ。",
@@ -180,18 +15,38 @@ const excerptsByNo: Record<number, string> = {
   10: "近未来やサイバー感を日常服に落とし込むテイスト別ガイド。水色、黒、シルバーで透明感を作ります。",
 };
 
+function createFallbackExcerpt(row: (typeof rows)[number]) {
+  const mood = row.moodKeywords.slice(0, 3).join("、");
+  const scenes = row.scenes.slice(0, 3).join("、");
+
+  return `${row.mainColor}、${row.subColor}、${row.accentColor}を軸に、${mood}を日常服へ落とし込む${scenes}向けの非公式コーデ提案。`;
+}
+
+function normalizeArticleStatus(rowNo: number, sourceStatus: string): ArticleStatus {
+  if (rowNo === 1) {
+    return "sample";
+  }
+
+  if (sourceStatus === "未着手") {
+    return "未着手";
+  }
+
+  return "初期記事";
+}
+
 export const articles: ArticleSummary[] = rows.map((row): ArticleSummary => {
   const category = getCategoryByName(row.category);
+  const { sourceStatus: _sourceStatus, ...articleRow } = row;
 
   return {
-    ...row,
+    ...articleRow,
     moodKeywords: [...row.moodKeywords],
     scenes: [...row.scenes],
     itemTypes: [...row.itemTypes],
     affiliatePriority: [...row.affiliatePriority],
     categorySlug: category.slug,
-    status: row.no === 1 ? "sample" : "初期記事",
-    excerpt: excerptsByNo[row.no],
+    status: normalizeArticleStatus(row.no, row.sourceStatus),
+    excerpt: excerptsByNo[row.no] ?? createFallbackExcerpt(row),
   };
 });
 

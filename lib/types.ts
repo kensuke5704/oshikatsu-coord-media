@@ -49,6 +49,10 @@ export type ArticleSummary = {
   excerpt: string;
 };
 
+export type ArticleSeed = Omit<ArticleSummary, "categorySlug" | "status" | "excerpt"> & {
+  sourceStatus: string;
+};
+
 export type ProductStatus = "mock" | "active" | "paused";
 
 export type Product = {
