@@ -29,7 +29,7 @@ export function IllustrationNotice() {
           <ShieldCheck size={22} weight="duotone" />
         </span>
         <p className="text-sm font-bold leading-7 text-[#1d3337]">
-          イラストはコーデの雰囲気を示す参考表現です。実在の商品・公式衣装・キャラクタービジュアルを再現したものではありません。
+          参考コーデ画像は雰囲気を示すための生成表現です。実在の商品・公式衣装・キャラクタービジュアルを再現したものではありません。
         </p>
       </div>
     </div>

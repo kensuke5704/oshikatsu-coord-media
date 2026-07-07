@@ -119,7 +119,7 @@ export default async function ArticlePage({
             </section>
 
             <section className="mt-10">
-              <SectionHeading number="02" title="イラストで見るコーデ" />
+              <SectionHeading number="02" title="参考画像で見るコーデ" />
               <div className="space-y-4">
                 <IllustrationNotice />
                 <OutfitIllustration image={mainImage} />
