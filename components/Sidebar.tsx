@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Check, Heart } from "@phosphor-icons/react/dist/ssr";
-import { categories } from "@/lib/categories";
+import { getCategoriesWithArticleCounts } from "@/lib/articles";
 import type { ArticleSummary } from "@/lib/types";
 
 export function ArticleSidebar({
@@ -10,6 +10,8 @@ export function ArticleSidebar({
   summary: string[];
   related: ArticleSummary[];
 }) {
+  const categories = getCategoriesWithArticleCounts();
+
   return (
     <aside className="space-y-6 lg:sticky lg:top-24">
       <section className="media-card rounded-[8px] bg-white p-5">

@@ -1,4 +1,4 @@
-import { getCategoryByName } from "./categories";
+import { categories, getCategoryByName } from "./categories";
 import { articleRows as rows } from "./articleRows.generated";
 import type { ArticleDetail, ArticleStatus, ArticleSummary, CategorySlug } from "./types";
 
@@ -51,6 +51,19 @@ export const articles: ArticleSummary[] = rows.map((row): ArticleSummary => {
     thumbnailAlt: row.imageAlt ?? `${row.title}のコーディネート参考画像`,
   };
 });
+
+export function getCategoriesWithArticleCounts() {
+  const counts = new Map<CategorySlug, number>();
+
+  for (const article of articles) {
+    counts.set(article.categorySlug, (counts.get(article.categorySlug) ?? 0) + 1);
+  }
+
+  return categories.map((category) => ({
+    ...category,
+    count: counts.get(category.slug) ?? 0,
+  }));
+}
 
 export const sampleArticle: ArticleDetail = {
   ...articles[0],

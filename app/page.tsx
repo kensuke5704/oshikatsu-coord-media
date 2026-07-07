@@ -2,9 +2,10 @@ import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard";
 import { SiteShell } from "@/components/SiteShell";
 import { categories } from "@/lib/categories";
-import { articles } from "@/lib/articles";
+import { articles, getCategoriesWithArticleCounts } from "@/lib/articles";
 
 export default function HomePage() {
+  const categoriesWithCounts = getCategoriesWithArticleCounts();
   const featured = articles[0];
   const latest = articles.slice(1, 7);
   const ranking = [articles[0], articles[3], articles[4], articles[8], articles[9]];
@@ -116,7 +117,7 @@ export default function HomePage() {
             <h2>目的から探す</h2>
           </div>
           <div className="mt-7 grid gap-4 sm:grid-cols-2">
-            {categories.slice(0, 6).map((category) => (
+            {categoriesWithCounts.slice(0, 6).map((category) => (
               <Link
                 key={category.slug}
                 href={`/categories/${category.slug}`}

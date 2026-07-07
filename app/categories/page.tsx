@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { SiteShell } from "@/components/SiteShell";
-import { categories } from "@/lib/categories";
+import { getCategoriesWithArticleCounts } from "@/lib/articles";
 
 export const metadata = {
   title: "カテゴリ一覧 | oshikatsu coord",
 };
 
 export default function CategoriesPage() {
+  const categories = getCategoriesWithArticleCounts();
+
   return (
     <SiteShell>
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
