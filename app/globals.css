@@ -204,6 +204,7 @@ a {
   line-height: 1.25;
 }
 
+.section-title h1.topic-title,
 .section-title h2.topic-title {
   margin-top: 0.45rem;
   font-size: clamp(1rem, 2vw, 1.625rem);

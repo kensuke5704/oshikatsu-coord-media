@@ -54,6 +54,8 @@ export default async function ArticlePage({
   const footerRelated = related.slice(0, 3);
   const products = getProductsByIds(detail.productIds);
   const mainImage = detail.images[0];
+  const shouldShowPalette =
+    detail.category !== "EC・買い物ガイド" && detail.category !== "トレンド・特集";
 
   return (
     <SiteShell>
@@ -101,7 +103,7 @@ export default async function ArticlePage({
 
             <section className="mt-10">
               <SectionHeading number="01" title="カラー＆雰囲気のポイント" />
-              <div className="grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
+              <div className={`grid gap-5 ${shouldShowPalette ? "lg:grid-cols-[0.82fr_1.18fr]" : ""}`}>
                 <div className="soft-card rounded-[8px] p-5">
                   <ul className="space-y-3 text-sm font-bold leading-7 text-[#1d3337]">
                     {detail.colorPoints.map((point) => (
@@ -112,7 +114,7 @@ export default async function ArticlePage({
                     ))}
                   </ul>
                 </div>
-                <ColorPalette colors={detail.palette} />
+                {shouldShowPalette ? <ColorPalette colors={detail.palette} /> : null}
               </div>
             </section>
 

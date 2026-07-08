@@ -24,6 +24,9 @@ if (!row) {
   throw new Error(`Unknown article slug: ${slug}`);
 }
 
+const categoriesWithoutPalette = new Set(["EC・買い物ガイド", "トレンド・特集"]);
+const shouldShowPalette = !categoriesWithoutPalette.has(row.category);
+
 const colorValues = {
   水色: "#A9CAE8",
   黒: "#202124",
@@ -146,12 +149,14 @@ await sharp({
   },
 })
   .composite([
-    { input: resizedPanels[0], left: 0, top: 0 },
-    { input: resizedPanels[1], left: panelWidth, top: 0 },
-    { input: resizedPanels[2], left: 0, top: panelHeight },
-    { input: resizedPanels[3], left: panelWidth, top: panelHeight },
-    { input: Buffer.from(grainSvg), left: 0, top: 0, blend: "overlay" },
-    { input: Buffer.from(paletteOverlay()), left: 0, top: 0 },
+    ...[
+      { input: resizedPanels[0], left: 0, top: 0 },
+      { input: resizedPanels[1], left: panelWidth, top: 0 },
+      { input: resizedPanels[2], left: 0, top: panelHeight },
+      { input: resizedPanels[3], left: panelWidth, top: panelHeight },
+      { input: Buffer.from(grainSvg), left: 0, top: 0, blend: "overlay" },
+    ],
+    ...(shouldShowPalette ? [{ input: Buffer.from(paletteOverlay()), left: 0, top: 0 }] : []),
   ])
   .png()
   .toFile(outPath);
