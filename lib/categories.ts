@@ -14,12 +14,6 @@ export const categories = [
     description: "水色、黒、白など推し色から服や小物を選ぶガイド。",
   },
   {
-    name: "シーン別コーデ",
-    slug: "scene",
-    count: 15,
-    description: "ライブ、コラボカフェ、推し会など場面別の着こなし。",
-  },
-  {
     name: "テイスト別コーデ",
     slug: "taste",
     count: 10,
@@ -30,18 +24,6 @@ export const categories = [
     slug: "item",
     count: 10,
     description: "バッグ、靴、アクセサリーなど買い物導線のある記事。",
-  },
-  {
-    name: "初心者向けノウハウ",
-    slug: "knowhow",
-    count: 2,
-    description: "バウンドコーデの始め方や考え方をやさしく解説。",
-  },
-  {
-    name: "ルール・マナー・著作権",
-    slug: "rules",
-    count: 2,
-    description: "公式画像や衣装再現を避けて安心して楽しむための方針。",
   },
   {
     name: "EC・買い物ガイド",

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Check, Heart } from "@phosphor-icons/react/dist/ssr";
+import { Check } from "@phosphor-icons/react/dist/ssr";
 import { getCategoriesWithArticleCounts } from "@/lib/articles";
 import type { ArticleSummary } from "@/lib/types";
 
@@ -27,9 +27,6 @@ export function ArticleSidebar({
             </li>
           ))}
         </ul>
-        <div className="mt-6 flex justify-end text-[#b66f79]">
-          <Heart size={44} weight="duotone" />
-        </div>
       </section>
       <section className="media-card rounded-[8px] bg-white p-5">
         <h2 className="text-lg font-black text-[#2b2522]">おすすめの関連記事</h2>

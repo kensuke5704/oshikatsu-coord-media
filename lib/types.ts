@@ -1,22 +1,16 @@
 export type CategorySlug =
   | "oshi-character"
   | "oshi-color"
-  | "scene"
   | "taste"
   | "item"
-  | "knowhow"
-  | "rules"
   | "shopping"
   | "trend";
 
 export type CategoryName =
   | "推し別コーデ"
   | "推し色コーデ"
-  | "シーン別コーデ"
   | "テイスト別コーデ"
   | "アイテム別おすすめ"
-  | "初心者向けノウハウ"
-  | "ルール・マナー・著作権"
   | "EC・買い物ガイド"
   | "トレンド・特集";
 
@@ -51,6 +45,8 @@ export type ArticleSummary = {
   itemTypes: string[];
   affiliatePriority: string[];
   status: ArticleStatus;
+  publishedAt: string;
+  updatedAt: string;
   memo: string;
   excerpt: string;
   thumbnailImage: string;
@@ -101,9 +97,6 @@ export type DetailSection = {
 
 export type ArticleDetail = ArticleSummary & {
   description: string;
-  publishedAt: string;
-  updatedAt: string;
-  likes: number;
   palette: PaletteColor[];
   summary: string[];
   introduction: string[];

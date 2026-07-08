@@ -81,8 +81,8 @@
     "Oshikatsu Zen Kaku", "Oshikatsu BIZ UDPGothic", "Hiragino Sans",
     "Yu Gothic", system-ui, sans-serif;
   --font-editorial:
-    "Oshikatsu Shippori", "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Times New Roman",
-    serif;
+    "Oshikatsu Zen Kaku", "Oshikatsu BIZ UDPGothic", "Hiragino Sans",
+    "Yu Gothic", system-ui, sans-serif;
 }
 
 * {
@@ -273,14 +273,14 @@ a {
 }
 
 .article-card-title {
-  font-family: var(--font-editorial);
-  font-weight: 600;
-  letter-spacing: 0.015em;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .article-title {
-  font-family: var(--font-editorial);
-  font-weight: 600;
+  font-family: var(--font-ui);
+  font-weight: 700;
   letter-spacing: 0.01em;
 }
 

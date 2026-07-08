@@ -70,7 +70,7 @@ export default function AboutPage() {
               記事一覧へ
             </Link>
             <Link
-              href="/categories/rules"
+              href="/articles/oshikatsu-coordinate-copyright-manners"
               className="inline-flex min-h-11 items-center rounded-full border border-[#eadfda] bg-white px-5 text-sm font-black text-[#6b514a] transition hover:border-[#b66f79] hover:text-[#b66f79] active:translate-y-px"
             >
               ルールを見る

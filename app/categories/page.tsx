@@ -18,7 +18,7 @@ export default function CategoriesPage() {
             カテゴリ一覧
           </h1>
           <span>
-            推しの名前、推し色、行き先、買いたいアイテムからコーデ記事を探せます。
+            推しの名前、推し色、テイスト、買いたいアイテムからコーデ記事を探せます。
           </span>
         </div>
         <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

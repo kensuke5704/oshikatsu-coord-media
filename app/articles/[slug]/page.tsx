@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CalendarBlank, Heart, Tag } from "@phosphor-icons/react/dist/ssr";
+import { CalendarBlank, Tag } from "@phosphor-icons/react/dist/ssr";
+import { ArticleCard } from "@/components/ArticleCard";
 import { ArticleSidebar } from "@/components/Sidebar";
 import { ColorPalette } from "@/components/ColorPalette";
 import { DisclosureNotice, IllustrationNotice } from "@/components/Notice";
@@ -50,6 +51,7 @@ export default async function ArticlePage({
     notFound();
   }
   const related = getRelatedArticles(detail.relatedSlugs);
+  const footerRelated = related.slice(0, 3);
   const products = getProductsByIds(detail.productIds);
   const mainImage = detail.images[0];
 
@@ -69,7 +71,7 @@ export default async function ArticlePage({
             <span className="rounded-full bg-[#2f929b] px-4 py-2 text-sm font-black text-white">
               {detail.category}
             </span>
-            <h1 className="article-title mt-5 max-w-4xl text-3xl leading-[1.45] text-[#2b2522] sm:text-4xl lg:text-5xl">
+            <h1 className="article-title mt-5 max-w-4xl text-[1.72rem] leading-[1.55] text-[#2b2522] sm:text-[2.05rem] lg:text-[2.28rem]">
               {detail.title}
             </h1>
             <div className="mt-5 flex flex-wrap items-center gap-5 text-sm font-bold text-[#66777b]">
@@ -80,10 +82,6 @@ export default async function ArticlePage({
               <span className="inline-flex items-center gap-2">
                 <CalendarBlank size={18} />
                 更新: {detail.updatedAt}
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Heart size={18} />
-                {detail.likes}
               </span>
               <span className="inline-flex items-center gap-2">
                 <Tag size={18} />
@@ -156,7 +154,7 @@ export default async function ArticlePage({
               </div>
             </section>
 
-            <section className="mt-10 grid gap-5 lg:grid-cols-2">
+            <section className="mt-10">
               <div className="rounded-[8px] border border-[#9fd4d8] bg-[#f4fbfb] p-5">
                 <h2 className="text-2xl font-black text-[#2f929b]">着こなしのポイント</h2>
                 <div className="mt-4 space-y-4">
@@ -170,31 +168,6 @@ export default async function ArticlePage({
                   ))}
                 </div>
               </div>
-              <div className="rounded-[8px] border border-[#f0c7ce] bg-[#fff7f8] p-5">
-                <h2 className="text-2xl font-black text-[#e47a8a]">NGポイント</h2>
-                <ul className="mt-4 space-y-2 text-sm font-bold leading-7 text-[#1d3337]">
-                  {detail.ngPoints.map((point) => (
-                    <li key={point} className="flex gap-3">
-                      <span className="text-[#e47a8a]">×</span>
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-
-            <section className="mt-10">
-              <SectionHeading number="05" title="シーン別の着方" />
-              <div className="grid gap-4 md:grid-cols-3">
-                {detail.sceneSections.map((section) => (
-                  <section key={section.heading} className="soft-card rounded-[8px] p-5">
-                    <h3 className="text-lg font-black text-[#1d3337]">{section.heading}</h3>
-                    <p className="mt-3 text-sm font-bold leading-7 text-[#66777b]">
-                      {section.body[0]}
-                    </p>
-                  </section>
-                ))}
-              </div>
             </section>
 
             <section className="mt-10 rounded-[8px] border border-[#d7ecee] bg-white p-6">
@@ -205,6 +178,17 @@ export default async function ArticlePage({
                 ))}
               </div>
             </section>
+
+            {footerRelated.length > 0 ? (
+              <section className="mt-10">
+                <SectionHeading number="05" title="関連記事" />
+                <div className="grid gap-5 md:grid-cols-3">
+                  {footerRelated.map((article) => (
+                    <ArticleCard key={article.slug} article={article} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
           </div>
 
           <ArticleSidebar summary={detail.summary} related={related} />

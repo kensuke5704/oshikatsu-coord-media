@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { MagnifyingGlass, Tote } from "@phosphor-icons/react/dist/ssr";
+import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 
 const navItems = [
   { href: "/", label: "ホーム" },
   { href: "/categories/oshi-character", label: "推し別コーデ" },
   { href: "/categories/oshi-color", label: "推し色コーデ" },
-  { href: "/categories/scene", label: "シーン別コーデ" },
   { href: "/categories/taste", label: "テイスト別コーデ" },
   { href: "/categories/shopping", label: "お買い物ガイド" },
   { href: "/about", label: "このサイトについて" },
@@ -22,10 +21,7 @@ export function Header() {
           CATEGORY
         </Link>
         <Link href="/" className="justify-self-center text-center">
-          <span className="mx-auto grid size-9 place-items-center rounded-full border border-[#e0d5cf] bg-white text-[#b66f79] shadow-[0_10px_30px_rgba(65,45,38,0.05)]">
-            <Tote size={20} weight="duotone" />
-          </span>
-          <span className="brand-logo mt-2 block whitespace-nowrap text-[22px] leading-none text-[#2b2522] sm:text-[26px]">
+          <span className="brand-logo block whitespace-nowrap text-[22px] leading-none text-[#2b2522] sm:text-[26px]">
             oshikatsu coord
           </span>
           <span className="mt-1 block whitespace-nowrap text-[11px] font-medium tracking-[0.12em] text-[#8b7b74]">

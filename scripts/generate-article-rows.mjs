@@ -112,6 +112,8 @@ const rows = records.map((record, index) => {
     itemTypes: splitList(requireValue(values, "itemTypes", rowNumber)),
     affiliatePriority: splitList(requireValue(values, "affiliatePriority", rowNumber)),
     sourceStatus: requireValue(values, "status", rowNumber),
+    publishedAt: requireValue(values, "publishedAt", rowNumber),
+    updatedAt: requireValue(values, "updatedAt", rowNumber),
     imagePath:
       values.imagePath?.trim() || `/images/articles/${requireValue(values, "slug", rowNumber)}.png`,
     imageAlt:

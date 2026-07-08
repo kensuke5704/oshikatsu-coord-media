@@ -17,6 +17,10 @@ function createArticleSlots(sectionArticles: ArticleSummary[]) {
 }
 
 export default function HomePage() {
+  const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
+  const assetBasePath =
+    process.env.NEXT_PUBLIC_BASE_PATH ??
+    (process.env.GITHUB_ACTIONS === "true" && repositoryName !== "" ? `/${repositoryName}` : "");
   const featuredArticles = [
     articles[0],
     articles[3],
@@ -36,7 +40,7 @@ export default function HomePage() {
 
   return (
     <SiteShell>
-      <HomeCarousel articles={featuredArticles} />
+      <HomeCarousel articles={featuredArticles} assetBasePath={assetBasePath} />
 
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="space-y-14">

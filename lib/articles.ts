@@ -69,9 +69,6 @@ export const sampleArticle: ArticleDetail = {
   ...articles[0],
   description:
     "初音ミクのイメージカラーを、日常服に落とし込む非公式バウンドコーデ提案。水色×黒×シルバーで、透明感と近未来感のあるカジュアルコーデを紹介します。",
-  publishedAt: "2024.05.20",
-  updatedAt: "2024.05.20",
-  likes: 128,
   summary: [
     "水色×黒×シルバーで近未来感を演出",
     "透明感と軽やかさを意識したコーデ",
@@ -305,9 +302,6 @@ export function createDraftArticleDetail(summary: ArticleSummary): ArticleDetail
   return {
     ...summary,
     description: summary.excerpt,
-    publishedAt: "2026.07.07",
-    updatedAt: "2026.07.07",
-    likes: 0,
     palette,
     summary: [
       `${mainColorLabel}を軸に日常服へ落とし込む`,

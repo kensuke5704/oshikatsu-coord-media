@@ -39,9 +39,6 @@ export function ArticleCard({
         <span className="absolute left-5 top-5 rounded-full bg-white/88 px-3 py-1 text-[11px] font-medium text-[#6b514a] shadow-[0_8px_24px_rgba(65,45,38,0.08)]">
           {article.category}
         </span>
-        <span className="absolute bottom-5 right-5 text-[12px] font-black tracking-[0.16em] text-white/92">
-          ARTICLE {article.no}
-        </span>
       </Link>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3">
@@ -51,8 +48,10 @@ export function ArticleCard({
           <span className="text-xs font-bold text-[#a89b95]">No. {article.no}</span>
         </div>
         <h2
-          className={`article-card-title mt-4 leading-8 text-[#2b2522] transition group-hover:text-[#b66f79] ${
-            priority ? "text-2xl sm:text-3xl sm:leading-10" : "text-lg"
+          className={`article-card-title mt-4 text-[#2b2522] transition group-hover:text-[#b66f79] ${
+            priority
+              ? "text-[1.25rem] leading-[1.65] sm:text-[1.45rem] sm:leading-[1.58]"
+              : "text-[1.02rem] leading-[1.72] sm:text-[1.08rem]"
           }`}
         >
           <Link href={`/articles/${article.slug}`}>{article.title}</Link>
