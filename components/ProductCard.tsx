@@ -12,8 +12,8 @@ export function ProductCard({ product }: { product: Product }) {
       : product.imageUrl;
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d7ecee] bg-white">
-      <div className="grid aspect-[4/3] place-items-center border-b border-[#e3f1f2] bg-[#f6fbfb] p-4">
+    <article className="flex h-full w-[168px] shrink-0 snap-start flex-col overflow-hidden rounded-[8px] border border-[#d7ecee] bg-white sm:w-auto sm:shrink">
+      <div className="grid aspect-square place-items-center border-b border-[#e3f1f2] bg-[#f6fbfb] p-3 sm:aspect-[4/3] sm:p-4">
         {imageSrc ? (
           <img
             src={imageSrc}
@@ -34,20 +34,20 @@ export function ProductCard({ product }: { product: Product }) {
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-4">
-        <h3 className="text-base font-black leading-snug text-[#1d3337]">
+      <div className="flex flex-1 flex-col p-3 sm:p-4">
+        <h3 className="text-sm font-black leading-snug text-[#1d3337] sm:text-base">
           {product.displayName}
         </h3>
-        <p className="mt-1 text-sm font-bold text-[#66777b]">{product.color}</p>
-        <p className="mt-3 text-lg font-black text-[#1d3337]">{product.price}</p>
-        <p className="mt-1 text-[11px] font-bold leading-5 text-[#8a989b]">
+        <p className="mt-1 text-xs font-bold text-[#66777b] sm:text-sm">{product.color}</p>
+        <p className="mt-2 text-base font-black text-[#1d3337] sm:mt-3 sm:text-lg">{product.price}</p>
+        <p className="mt-1 text-[10px] font-bold leading-5 text-[#8a989b] sm:text-[11px]">
           {product.priceNote}
         </p>
         <a
           href={product.affiliateUrl}
           target="_blank"
           rel="sponsored noopener noreferrer"
-          className="mt-4 inline-flex min-h-11 items-center justify-center rounded-[8px] bg-[#e47a8a] px-4 text-sm font-black text-white transition hover:bg-[#d86678] active:translate-y-px"
+          className="mt-3 inline-flex min-h-10 items-center justify-center rounded-[8px] bg-[#e47a8a] px-3 text-xs font-black text-white transition hover:bg-[#d86678] active:translate-y-px sm:mt-4 sm:min-h-11 sm:px-4 sm:text-sm"
         >
           商品ページを見る
         </a>

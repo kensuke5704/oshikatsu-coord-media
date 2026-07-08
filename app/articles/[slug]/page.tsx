@@ -131,7 +131,7 @@ export default async function ArticlePage({
             {products.length > 0 ? (
               <section className="mt-10">
                 <SectionHeading number="03" title="おすすめアイテム" />
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-5">
                   {products.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
