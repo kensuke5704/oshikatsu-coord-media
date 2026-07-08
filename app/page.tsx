@@ -95,9 +95,6 @@ export default function HomePage() {
                     {article.title}
                   </span>
                 </span>
-                <span className="hidden rounded-full border border-[#eadfda] px-3 py-1 text-xs font-bold text-[#8b7b74] sm:inline-flex">
-                  No. {article.no}
-                </span>
               </Link>
             </li>
           ))}

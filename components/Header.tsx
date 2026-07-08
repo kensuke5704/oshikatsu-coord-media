@@ -7,7 +7,6 @@ const navItems = [
   { href: "/categories/oshi-color", label: "推し色コーデ" },
   { href: "/categories/taste", label: "テイスト別コーデ" },
   { href: "/categories/shopping", label: "お買い物ガイド" },
-  { href: "/about", label: "このサイトについて" },
 ];
 
 export function Header() {

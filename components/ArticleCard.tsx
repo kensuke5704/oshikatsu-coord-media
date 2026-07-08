@@ -45,7 +45,6 @@ export function ArticleCard({
           <span className="text-xs font-medium text-[#b66f79]">
             {article.category}
           </span>
-          <span className="text-xs font-bold text-[#a89b95]">No. {article.no}</span>
         </div>
         <h2
           className={`article-card-title mt-4 text-[#2b2522] transition group-hover:text-[#b66f79] ${
