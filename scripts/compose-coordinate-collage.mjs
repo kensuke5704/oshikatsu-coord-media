@@ -70,10 +70,14 @@ const panelWidth = 512;
 const panelHeight = 768;
 const cardWidth = 260;
 const cardHeight = 350;
-const swatchWidth = 190;
-const swatchHeight = 285;
+const cardMargin = 10;
+const labelHeight = 56;
+const swatchWidth = cardWidth - cardMargin * 2;
+const swatchHeight = cardHeight - labelHeight - cardMargin;
 const cardX = 382;
-const swatchX = 417;
+const swatchX = cardX + cardMargin;
+const textX = cardX + cardMargin + 12;
+const textBaselineFromLabelTop = 40;
 const tops = [219, 585, 951];
 
 async function panelBuffer(source) {
@@ -121,8 +125,8 @@ function paletteOverlay() {
       .map(
         (color, index) => `
           <rect x="${cardX}" y="${tops[index]}" width="${cardWidth}" height="${cardHeight}" fill="#f6f5f7"/>
-          <rect x="${swatchX}" y="${tops[index] + 14}" width="${swatchWidth}" height="${swatchHeight}" fill="${color}"/>
-          <text x="${cardX + 38}" y="${tops[index] + 329}" font-family="Arial Black, Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="900" fill="#181818">${color}</text>
+          <rect x="${swatchX}" y="${tops[index] + cardMargin}" width="${swatchWidth}" height="${swatchHeight}" fill="${color}"/>
+          <text x="${textX}" y="${tops[index] + cardHeight - labelHeight + textBaselineFromLabelTop}" font-family="Arial Black, Helvetica Neue, Arial, sans-serif" font-size="30" font-weight="900" fill="#181818">${color}</text>
         `,
       )
       .join("")}
