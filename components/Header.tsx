@@ -8,6 +8,7 @@ const navItems = [
   { href: "/categories/scene", label: "シーン別コーデ" },
   { href: "/categories/taste", label: "テイスト別コーデ" },
   { href: "/categories/shopping", label: "お買い物ガイド" },
+  { href: "/about", label: "このサイトについて" },
 ];
 
 export function Header() {

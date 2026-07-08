@@ -11,6 +11,7 @@ export function Footer() {
           </p>
         </div>
         <div className="grid gap-2 text-sm font-bold text-[#4a403b] sm:grid-cols-2">
+          <Link className="transition hover:text-[#b66f79]" href="/about">このサイトについて</Link>
           <Link className="transition hover:text-[#b66f79]" href="/articles">記事一覧</Link>
           <Link className="transition hover:text-[#b66f79]" href="/categories">カテゴリ一覧</Link>
           <Link className="transition hover:text-[#b66f79]" href="/categories/rules">ルール・マナー</Link>
