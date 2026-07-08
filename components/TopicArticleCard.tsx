@@ -9,7 +9,7 @@ const basePath =
 
 export function TopicArticleCard({ article }: { article: ArticleSummary }) {
   return (
-    <article className="group">
+    <article className="group w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
       <Link
         href={`/articles/${article.slug}`}
         className="relative block aspect-square overflow-hidden rounded-[8px] border border-[#eadfda] bg-[#f4eeeb]"
@@ -35,7 +35,7 @@ export function TopicArticleCard({ article }: { article: ArticleSummary }) {
 
 export function TopicArticlePlaceholder() {
   return (
-    <article>
+    <article className="w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
       <div className="grid aspect-square place-items-center rounded-[8px] border border-dashed border-[#d7c5bf] bg-[#f1eeeb]">
         <span className="text-xs font-black tracking-[0.18em] text-[#a89b95]">COMING SOON</span>
       </div>

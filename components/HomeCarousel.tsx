@@ -42,7 +42,7 @@ export function HomeCarousel({
 
   return (
     <section
-      className="mx-auto max-w-5xl px-4 pt-6 sm:px-6 lg:px-8 lg:pt-8"
+      className="mx-auto max-w-5xl px-4 pt-4 sm:px-6 sm:pt-6 lg:px-8 lg:pt-8"
       aria-label="特集記事"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -50,7 +50,7 @@ export function HomeCarousel({
       <div className="relative overflow-hidden rounded-[8px] border border-[#eadfda] bg-[#f4eeeb] shadow-[0_16px_50px_rgba(65,45,38,0.07)]">
         <Link
           href={`/articles/${activeArticle.slug}`}
-          className="relative block aspect-[4/3] min-h-[220px] overflow-hidden sm:aspect-[16/7] sm:min-h-[280px] lg:min-h-[340px]"
+          className="relative mx-auto block aspect-[2/3] max-h-[560px] min-h-[360px] w-full max-w-[420px] overflow-hidden bg-[#f4eeeb] sm:aspect-[16/7] sm:min-h-[280px] sm:max-h-none sm:max-w-none lg:min-h-[340px]"
           aria-label={activeArticle.title}
         >
           <Image
@@ -59,7 +59,7 @@ export function HomeCarousel({
             alt={activeArticle.thumbnailAlt}
             fill
             sizes="(min-width: 1024px) 960px, 100vw"
-            className="object-cover transition duration-700 ease-out motion-safe:animate-[carouselImageIn_700ms_ease-out]"
+            className="object-cover object-center transition duration-700 ease-out motion-safe:animate-[carouselImageIn_700ms_ease-out]"
             priority
           />
           <span className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />

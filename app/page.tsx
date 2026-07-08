@@ -49,7 +49,7 @@ export default function HomePage() {
               <div className="mb-6 flex items-end justify-between gap-5">
                 <div className="section-title">
                   <p>Topic</p>
-                  <h2>{topic.title}</h2>
+                  <h2 className="topic-title">{topic.title}</h2>
                 </div>
                 <Link
                   href={topic.href}
@@ -58,7 +58,7 @@ export default function HomePage() {
                   もっと見る
                 </Link>
               </div>
-              <div className="grid gap-5 sm:grid-cols-3">
+              <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0">
                 {createArticleSlots(topic.articles).map((article, index) => (
                   article ? (
                     <TopicArticleCard key={article.slug} article={article} />
