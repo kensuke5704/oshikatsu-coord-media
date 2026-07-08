@@ -13,8 +13,6 @@ export function Footer() {
         <div className="grid gap-2 text-sm font-bold text-[#4a403b] sm:grid-cols-2">
           <Link className="transition hover:text-[#b66f79]" href="/articles">記事一覧</Link>
           <Link className="transition hover:text-[#b66f79]" href="/categories">カテゴリ一覧</Link>
-          <Link className="transition hover:text-[#b66f79]" href="/articles/oshikatsu-coordinate-copyright-manners">ルール・マナー</Link>
-          <Link className="transition hover:text-[#b66f79]" href="/categories/shopping">お買い物ガイド</Link>
         </div>
       </div>
     </footer>

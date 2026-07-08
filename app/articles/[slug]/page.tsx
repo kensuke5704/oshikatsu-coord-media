@@ -4,7 +4,7 @@ import { CalendarBlank, Tag } from "@phosphor-icons/react/dist/ssr";
 import { ArticleCard } from "@/components/ArticleCard";
 import { ArticleSidebar } from "@/components/Sidebar";
 import { ColorPalette } from "@/components/ColorPalette";
-import { DisclosureNotice, IllustrationNotice } from "@/components/Notice";
+import { DisclosureNotice } from "@/components/Notice";
 import { OutfitIllustration } from "@/components/OutfitIllustration";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -16,6 +16,11 @@ import {
   getRelatedArticles,
 } from "@/lib/articles";
 import { getProductsByIds } from "@/lib/products";
+
+const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
+const basePath =
+  process.env.NEXT_PUBLIC_BASE_PATH ??
+  (process.env.GITHUB_ACTIONS === "true" && repositoryName !== "" ? `/${repositoryName}` : "");
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -119,11 +124,8 @@ export default async function ArticlePage({
             </section>
 
             <section className="mt-10">
-              <SectionHeading number="02" title="参考画像で見るコーデ" />
-              <div className="space-y-4">
-                <IllustrationNotice />
-                <OutfitIllustration image={mainImage} />
-              </div>
+              <SectionHeading number="02" title="コーディネートイメージ" />
+              <OutfitIllustration image={mainImage} />
             </section>
 
             {products.length > 0 ? (
@@ -134,25 +136,42 @@ export default async function ArticlePage({
                     <ProductCard key={product.id} product={product} />
                   ))}
                 </div>
-                <p className="mt-3 text-center text-xs font-bold text-[#8a989b]">
-                  商品データは仮データです。実運用では公式アフィリエイト素材を無加工で表示します。
-                </p>
               </section>
             ) : null}
 
             <section className="mt-10">
               <SectionHeading number="04" title="アイテム構成" />
-              <div className="grid gap-4">
-                {detail.itemSections.map((section) => (
-                  <section key={section.heading} className="soft-card rounded-[8px] p-5">
-                    <h3 className="text-xl font-black text-[#1d3337]">{section.heading}</h3>
-                    <div className="article-body text-sm font-medium text-[#1d3337]">
-                      {section.body.map((paragraph) => (
-                        <p key={paragraph}>{paragraph}</p>
-                      ))}
-                    </div>
-                  </section>
-                ))}
+              <div className="grid gap-6 rounded-[8px] border border-[#d7ecee] bg-white p-4 md:grid-cols-[minmax(0,0.9fr)_minmax(280px,1fr)] md:p-5">
+                <div className="overflow-hidden rounded-[8px] bg-[#f6fbfb]">
+                  <img
+                    src={`${basePath}/images/articles/item-composition-hatsune-miku-v1.png`}
+                    alt={`${detail.title}のアイテム構成イラスト`}
+                    className="h-full min-h-[320px] w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="grid content-center gap-3">
+                  {detail.itemSections.map((section, index) => (
+                    <section
+                      key={section.heading}
+                      className="rotate-[-0.35deg] rounded-[8px] border border-[#9fd4d8] bg-[#fffdf7] p-4 shadow-[0_10px_28px_rgba(37,105,112,0.08)] even:rotate-[0.35deg]"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="grid size-8 shrink-0 place-items-center rounded-full bg-[#2f929b] text-sm font-black text-white">
+                          {index + 1}
+                        </span>
+                        <div>
+                          <h3 className="text-base font-black leading-7 text-[#1d3337]">
+                            {section.heading}
+                          </h3>
+                          <p className="mt-1 text-sm font-bold leading-7 text-[#52676b]">
+                            {section.body[0]}
+                          </p>
+                        </div>
+                      </div>
+                    </section>
+                  ))}
+                </div>
               </div>
             </section>
 

@@ -29,6 +29,14 @@ export type ArticleImage = {
   caption: string;
 };
 
+export type ArticleSearchItem = {
+  slug: string;
+  title: string;
+  category: CategoryName;
+  excerpt: string;
+  searchText: string;
+};
+
 export type ArticleSummary = {
   no: number;
   category: CategoryName;
@@ -70,7 +78,6 @@ export type Product = {
   displayName: string;
   itemType: string;
   color: string;
-  ecName: string;
   affiliateUrl: string;
   imageUrl?: string;
   price: string;

@@ -1,12 +1,22 @@
 import type { Product } from "@/lib/types";
 
+const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
+const basePath =
+  process.env.NEXT_PUBLIC_BASE_PATH ??
+  (process.env.GITHUB_ACTIONS === "true" && repositoryName !== "" ? `/${repositoryName}` : "");
+
 export function ProductCard({ product }: { product: Product }) {
+  const imageSrc =
+    product.imageUrl && product.imageUrl.startsWith("/")
+      ? `${basePath}${product.imageUrl}`
+      : product.imageUrl;
+
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-[8px] border border-[#d7ecee] bg-white">
       <div className="grid aspect-[4/3] place-items-center border-b border-[#e3f1f2] bg-[#f6fbfb] p-4">
-        {product.imageUrl ? (
+        {imageSrc ? (
           <img
-            src={product.imageUrl}
+            src={imageSrc}
             alt={product.displayName}
             className="max-h-full max-w-full object-contain"
             loading="lazy"
@@ -25,8 +35,7 @@ export function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <p className="text-xs font-black text-[#2f929b]">{product.ecName}</p>
-        <h3 className="mt-2 text-base font-black leading-snug text-[#1d3337]">
+        <h3 className="text-base font-black leading-snug text-[#1d3337]">
           {product.displayName}
         </h3>
         <p className="mt-1 text-sm font-bold text-[#66777b]">{product.color}</p>

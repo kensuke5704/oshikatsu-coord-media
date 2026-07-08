@@ -11,6 +11,9 @@ const csvPath =
   process.env.ARTICLE_CSV_PATH ||
   (fs.existsSync(googleDriveCsvPath) ? googleDriveCsvPath : defaultCsvPath);
 const outPath = path.join(rootDir, "lib", "articleRows.generated.ts");
+const imageConfigPath = path.join(rootDir, "data", "article-image-config.json");
+const imageConfig = JSON.parse(fs.readFileSync(imageConfigPath, "utf8"));
+const imageRevision = imageConfig.imageRevision ? `-${imageConfig.imageRevision}` : "";
 
 function parseCsv(text) {
   const rows = [];
@@ -115,7 +118,7 @@ const rows = records.map((record, index) => {
     publishedAt: requireValue(values, "publishedAt", rowNumber),
     updatedAt: requireValue(values, "updatedAt", rowNumber),
     imagePath:
-      values.imagePath?.trim() || `/images/articles/${requireValue(values, "slug", rowNumber)}.png`,
+      values.imagePath?.trim() || `/images/articles/${requireValue(values, "slug", rowNumber)}${imageRevision}.png`,
     imageAlt:
       values.imageAlt?.trim() ||
       `${requireValue(values, "title", rowNumber)}のコーディネート参考画像`,

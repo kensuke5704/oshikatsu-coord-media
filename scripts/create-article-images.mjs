@@ -3,6 +3,8 @@ import path from "node:path";
 import sharp from "sharp";
 
 const generatedRowsPath = path.join(process.cwd(), "lib", "articleRows.generated.ts");
+const imageConfigPath = path.join(process.cwd(), "data", "article-image-config.json");
+const imageConfig = JSON.parse(fs.readFileSync(imageConfigPath, "utf8"));
 
 const generatedRowsText = fs.readFileSync(generatedRowsPath, "utf8");
 const jsonMatch = generatedRowsText.match(/export const articleRows = ([\s\S]*?) satisfies ArticleSeed\[];/);
@@ -12,8 +14,8 @@ if (!jsonMatch) {
 }
 
 const articleRows = JSON.parse(jsonMatch[1]);
-const expectedWidth = 1024;
-const expectedHeight = 1536;
+const expectedWidth = imageConfig.width;
+const expectedHeight = imageConfig.height;
 const missing = [];
 const invalid = [];
 

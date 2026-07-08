@@ -1,0 +1,65 @@
+[
+  {
+    "revision": "v2",
+    "createdAt": "2026-07-08",
+    "layout": "2x2; previous set used mixed full-body/detail placement and similar concrete street backgrounds",
+    "avoidInNextGeneration": [
+      "all four panels using similar straight-on concrete-wall street shots",
+      "repeating the same front-facing standing pose",
+      "placing detail photos only as bag-in-hand closeups",
+      "using the same cool gray sidewalk and railing mood across every article"
+    ],
+    "articleImages": [
+      {
+        "slug": "hatsune-miku-bound-coordinate",
+        "path": "/images/articles/hatsune-miku-bound-coordinate.png",
+        "notes": "Aqua, black, silver palette cards; mostly concrete street; full-body and detail crops felt similar to later images."
+      },
+      {
+        "slug": "mint-blue-oshikatsu-coordinate",
+        "path": "/images/articles/mint-blue-oshikatsu-coordinate.png",
+        "notes": "Mint/white/silver palette cards; pale outfit, seated and full-body street shots."
+      },
+      {
+        "slug": "black-oshikatsu-coordinate",
+        "path": "/images/articles/black-oshikatsu-coordinate.png",
+        "notes": "Black/white/silver palette cards; black jacket and skirt/tourser looks; street railing mood."
+      },
+      {
+        "slug": "silver-bag-oshikatsu-coordinate",
+        "path": "/images/articles/silver-bag-oshikatsu-coordinate.png",
+        "notes": "Silver bag focus; detail shots leaned heavily on bag and hand crops."
+      },
+      {
+        "slug": "futuristic-cyber-oshikatsu-coordinate",
+        "path": "/images/articles/futuristic-cyber-oshikatsu-coordinate.png",
+        "notes": "Aqua/black/silver cyber mood; similar A-model concrete background to other palette articles."
+      },
+      {
+        "slug": "live-oshikatsu-coordinate",
+        "path": "/images/articles/live-oshikatsu-coordinate.png",
+        "notes": "No palette; venue approach style; phone/bag detail and walking crop."
+      },
+      {
+        "slug": "collaboration-cafe-oshikatsu-coordinate",
+        "path": "/images/articles/collaboration-cafe-oshikatsu-coordinate.png",
+        "notes": "No palette; cafe-adjacent styling but still similar concrete street framing."
+      },
+      {
+        "slug": "bound-coordinate-beginner-guide",
+        "path": "/images/articles/bound-coordinate-beginner-guide.png",
+        "notes": "No palette; beginner neutral styling, notebook/detail crops."
+      },
+      {
+        "slug": "oshikatsu-coordinate-copyright-manners",
+        "path": "/images/articles/oshikatsu-coordinate-copyright-manners.png",
+        "notes": "No palette; neutral rule/manner mood with notebook and tote."
+      },
+      {
+        "slug": "shein-oshikatsu-coordinate-guide",
+        "path": "/images/articles/shein-oshikatsu-coordinate-guide.png",
+        "notes": "No palette; shopping guide mood with phone and parcel-like bag."
+      }
+    ]
+  }
+]

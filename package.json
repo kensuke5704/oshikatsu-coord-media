@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "articles:sync": "node scripts/generate-article-rows.mjs",
+    "images:finalize": "node scripts/finalize-article-assets.mjs",
     "images:articles": "node scripts/create-article-images.mjs",
-    "build": "npm run articles:sync && npm run images:articles && next build",
+    "images:context": "node scripts/list-article-image-context.mjs",
+    "build": "npm run articles:sync && npm run images:finalize && npm run images:articles && next build",
     "export": "npm run build",
     "start": "next start",
     "lint": "tsc --noEmit",

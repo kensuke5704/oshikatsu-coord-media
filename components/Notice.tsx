@@ -1,4 +1,4 @@
-import { Info, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { Info } from "@phosphor-icons/react/dist/ssr";
 
 export function DisclosureNotice() {
   return (
@@ -16,21 +16,6 @@ export function DisclosureNotice() {
             公式画像・ロゴ・衣装デザインの再現ではなく、色や雰囲気を日常服に落とし込むことを目的としています。
           </p>
         </div>
-      </div>
-    </div>
-  );
-}
-
-export function IllustrationNotice() {
-  return (
-    <div className="rounded-[8px] border border-[#d7ecee] bg-[#f4fbfb] p-4">
-      <div className="flex gap-3">
-        <span className="mt-1 text-[#2f929b]">
-          <ShieldCheck size={22} weight="duotone" />
-        </span>
-        <p className="text-sm font-bold leading-7 text-[#1d3337]">
-          参考コーデ画像は雰囲気を示すための生成表現です。実在の商品・公式衣装・キャラクタービジュアルを再現したものではありません。
-        </p>
       </div>
     </div>
   );

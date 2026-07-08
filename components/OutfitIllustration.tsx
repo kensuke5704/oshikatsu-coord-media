@@ -17,10 +17,6 @@ export function OutfitIllustration({ image }: { image: ArticleImage }) {
         className="h-auto w-full rounded-[6px]"
         priority
       />
-      <div className="mt-3 rounded-[8px] border border-[#9fd4d8] bg-white/92 p-4 text-sm font-bold leading-7 text-[#1d3337] shadow-[0_18px_50px_rgba(37,105,112,0.12)] backdrop-blur sm:absolute sm:bottom-6 sm:right-6 sm:mt-0 sm:max-w-[220px]">
-        <p className="text-[#2f929b]">コーデのポイント</p>
-        <p>{image.caption}</p>
-      </div>
     </figure>
   );
 }
