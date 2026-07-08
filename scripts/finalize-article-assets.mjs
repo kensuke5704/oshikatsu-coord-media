@@ -147,7 +147,12 @@ async function finalizeArticleImages() {
     }
 
     const sourcePath = path.join(generatedDir, sourceName);
+    const outputPath = path.join(outputArticleDir, `${row.slug}-${imageConfig.imageRevision}.png`);
     if (!fs.existsSync(sourcePath)) {
+      if (fs.existsSync(outputPath)) {
+        continue;
+      }
+
       throw new Error(`Missing source image: ${sourcePath}`);
     }
 
@@ -156,7 +161,6 @@ async function finalizeArticleImages() {
       layers.push({ input: paletteSvg(row), blend: "over" });
     }
 
-    const outputPath = path.join(outputArticleDir, `${row.slug}-${imageConfig.imageRevision}.png`);
     await sharp(sourcePath)
       .resize(outputWidth, outputHeight, { fit: "cover", position: "center" })
       .modulate({ saturation: 0.96, brightness: 0.995 })
@@ -168,10 +172,28 @@ async function finalizeArticleImages() {
 
 async function finalizeProductImages() {
   fs.mkdirSync(outputProductDir, { recursive: true });
+  const expectedProductImages = [
+    "mint-rib-knit-v1.png",
+    "black-pleats-skirt-v1.png",
+    "silver-mini-bag-v1.png",
+    "black-platform-sneaker-v1.png",
+    "clear-silver-accessory-v1.png",
+  ];
   const sheetPath = path.join(
     generatedDir,
     "ig_0661d3e079a669bd016a4e633e46908191ad09d3494344226b.png",
   );
+  if (!fs.existsSync(sheetPath)) {
+    const allProductImagesExist = expectedProductImages.every((name) =>
+      fs.existsSync(path.join(outputProductDir, name)),
+    );
+
+    if (allProductImagesExist) {
+      return;
+    }
+
+    throw new Error(`Missing product source image: ${sheetPath}`);
+  }
   const metadata = await sharp(sheetPath).metadata();
   const halfW = Math.floor((metadata.width ?? 1024) / 2);
   const halfH = Math.floor((metadata.height ?? 1024) / 2);
