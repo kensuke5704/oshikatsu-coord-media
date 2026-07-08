@@ -58,7 +58,7 @@ export default function HomePage() {
                   もっと見る
                 </Link>
               </div>
-              <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0">
+              <div className="-mx-4 flex snap-x scroll-pl-6 gap-4 overflow-x-auto px-6 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0">
                 {createArticleSlots(topic.articles).map((article, index) => (
                   article ? (
                     <TopicArticleCard key={article.slug} article={article} />

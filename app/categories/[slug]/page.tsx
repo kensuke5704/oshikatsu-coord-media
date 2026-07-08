@@ -40,7 +40,7 @@ export default async function CategoryPage({
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="section-title fade-up">
           <p>Category</p>
-          <h1>
+          <h1 className="topic-title">
             {category.name}
           </h1>
           <span>
