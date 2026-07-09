@@ -258,6 +258,10 @@ a {
   position: relative;
 }
 
+.home-ranking-section .home-topic-title {
+  font-size: clamp(1.32rem, 2.7vw, 2.3rem);
+}
+
 .home-topic-action {
   border-color: #ffd5df;
   background: #fff7fb;
