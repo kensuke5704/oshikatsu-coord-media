@@ -89,7 +89,7 @@ export default function HomePage() {
                 </span>
                 <span>
                   <span className="block text-xs font-extrabold text-[#b66f79]">
-                    {article.category}
+                    {article.menuLabel}
                   </span>
                   <span className="mt-2 block text-base font-black leading-7 text-[#2b2522] transition group-hover:text-[#b66f79]">
                     {article.title}

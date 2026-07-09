@@ -7,11 +7,12 @@ import type { ArticleSearchItem } from "@/lib/types";
 
 const navItems = [
   { href: "/", label: "ホーム" },
-  { href: "/categories/oshi-character", label: "推し別コーデ" },
-  { href: "/categories/oshi-color", label: "推し色コーデ" },
-  { href: "/categories/taste", label: "テイスト別コーデ" },
-  { href: "/categories/item", label: "アイテム別おすすめ" },
-  { href: "/categories/trend", label: "トレンド・特集" },
+  { href: "/categories/look", label: "LOOK" },
+  { href: "/categories/color", label: "COLOR" },
+  { href: "/categories/style", label: "STYLE" },
+  { href: "/categories/scene", label: "SCENE" },
+  { href: "/categories/guide", label: "GUIDE" },
+  { href: "/categories/feature", label: "FEATURE" },
 ];
 
 function normalizeKeyword(value: string) {
@@ -97,7 +98,7 @@ export function Header({ searchItems }: { searchItems: ArticleSearchItem[] }) {
                   className="block border-b border-[#f0e9e5] px-4 py-3 last:border-b-0 transition hover:bg-[#fff8f5]"
                   onClick={() => setIsSearchOpen(false)}
                 >
-                  <span className="block text-[11px] font-black text-[#b66f79]">{article.category}</span>
+                  <span className="block text-[11px] font-black text-[#b66f79]">{article.menuLabel}</span>
                   <span className="mt-1 block text-sm font-black leading-6 text-[#2b2522]">{article.title}</span>
                   <span className="mt-1 line-clamp-2 block text-xs font-medium leading-5 text-[#746863]">
                     {article.excerpt}

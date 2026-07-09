@@ -1,18 +1,20 @@
 export type CategorySlug =
-  | "oshi-character"
-  | "oshi-color"
-  | "taste"
-  | "item"
-  | "shopping"
-  | "trend";
+  | "look"
+  | "color"
+  | "style"
+  | "scene"
+  | "guide"
+  | "feature";
 
 export type CategoryName =
-  | "推し別コーデ"
-  | "推し色コーデ"
-  | "テイスト別コーデ"
-  | "アイテム別おすすめ"
-  | "EC・買い物ガイド"
-  | "トレンド・特集";
+  | "LOOK"
+  | "COLOR"
+  | "STYLE"
+  | "SCENE"
+  | "GUIDE"
+  | "FEATURE";
+
+export type ArticleType = CategoryName;
 
 export type Category = {
   name: CategoryName;
@@ -32,14 +34,16 @@ export type ArticleImage = {
 export type ArticleSearchItem = {
   slug: string;
   title: string;
-  category: CategoryName;
+  menuLabel: CategoryName;
   excerpt: string;
   searchText: string;
 };
 
 export type ArticleSummary = {
   no: number;
-  category: CategoryName;
+  articleType: ArticleType;
+  featureType: string;
+  menuLabel: CategoryName;
   categorySlug: CategorySlug;
   title: string;
   slug: string;
@@ -51,10 +55,9 @@ export type ArticleSummary = {
   moodKeywords: string[];
   scenes: string[];
   itemTypes: string[];
+  tags: string[];
   affiliatePriority: string[];
   status: ArticleStatus;
-  publishedAt: string;
-  updatedAt: string;
   memo: string;
   excerpt: string;
   thumbnailImage: string;
@@ -107,6 +110,7 @@ export type ArticleDetail = ArticleSummary & {
   palette: PaletteColor[];
   summary: string[];
   introduction: string[];
+  editorialSections?: DetailSection[];
   colorPoints: string[];
   illustrationNotes: string[];
   itemSections: DetailSection[];

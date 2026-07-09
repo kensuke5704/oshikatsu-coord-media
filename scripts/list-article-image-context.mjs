@@ -7,7 +7,7 @@ const imageConfigPath = path.join(rootDir, "data", "article-image-config.json");
 const historyPath = path.join(rootDir, "data", "article-image-history.json");
 
 const imageConfig = JSON.parse(fs.readFileSync(imageConfigPath, "utf8"));
-const noPaletteCategories = new Set(imageConfig.noPaletteCategories ?? []);
+const noPaletteArticleTypes = new Set(imageConfig.noPaletteArticleTypes ?? []);
 const history = fs.existsSync(historyPath) ? JSON.parse(fs.readFileSync(historyPath, "utf8")) : [];
 
 const generatedRowsText = fs.readFileSync(generatedRowsPath, "utf8");
@@ -26,9 +26,15 @@ console.log("targets:");
 for (const row of articleRows) {
   const relativeImagePath = (row.imagePath ?? `/images/articles/${row.slug}.png`).replace(/^\//, "");
   const imagePath = path.join("public", relativeImagePath);
-  const palette = noPaletteCategories.has(row.category) ? "no-palette" : "palette";
+  const palette =
+    noPaletteArticleTypes.has(row.articleType) ||
+    row.mainColor === "複数" ||
+    row.subColor === "複数" ||
+    row.accentColor === "複数"
+      ? "no-palette"
+      : "palette";
   const exists = fs.existsSync(path.join(rootDir, imagePath)) ? "exists" : "missing";
-  console.log(`${row.no}\t${row.slug}\t${row.category}\t${palette}\t${exists}\t${imagePath}`);
+  console.log(`${row.no}\t${row.slug}\t${row.articleType}\t${palette}\t${exists}\t${imagePath}`);
 }
 
 console.log("");

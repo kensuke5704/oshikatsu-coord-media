@@ -37,13 +37,13 @@ export function ArticleCard({
         />
         <span className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-transparent" />
         <span className="absolute left-5 top-5 rounded-full bg-white/88 px-3 py-1 text-[11px] font-medium text-[#6b514a] shadow-[0_8px_24px_rgba(65,45,38,0.08)]">
-          {article.category}
+          {article.menuLabel}
         </span>
       </Link>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3">
           <span className="text-xs font-medium text-[#b66f79]">
-            {article.category}
+            {article.menuLabel}
           </span>
         </div>
         <h2

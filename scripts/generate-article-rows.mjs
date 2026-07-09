@@ -102,7 +102,9 @@ const rows = records.map((record, index) => {
 
   return {
     no,
-    category: requireValue(values, "category", rowNumber),
+    articleType: requireValue(values, "articleType", rowNumber),
+    featureType: requireValue(values, "featureType", rowNumber),
+    menuLabel: requireValue(values, "menuLabel", rowNumber),
     title: requireValue(values, "title", rowNumber),
     slug: requireValue(values, "slug", rowNumber),
     characterName: values.characterName?.trim() || undefined,
@@ -113,10 +115,9 @@ const rows = records.map((record, index) => {
     moodKeywords: splitList(requireValue(values, "moodKeywords", rowNumber)),
     scenes: splitList(requireValue(values, "scene", rowNumber)),
     itemTypes: splitList(requireValue(values, "itemTypes", rowNumber)),
+    tags: splitList(requireValue(values, "tags", rowNumber)),
     affiliatePriority: splitList(requireValue(values, "affiliatePriority", rowNumber)),
     sourceStatus: requireValue(values, "status", rowNumber),
-    publishedAt: requireValue(values, "publishedAt", rowNumber),
-    updatedAt: requireValue(values, "updatedAt", rowNumber),
     imagePath:
       values.imagePath?.trim() || `/images/articles/${requireValue(values, "slug", rowNumber)}${imageRevision}.png`,
     imageAlt:

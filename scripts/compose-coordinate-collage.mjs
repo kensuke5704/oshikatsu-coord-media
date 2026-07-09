@@ -24,8 +24,12 @@ if (!row) {
   throw new Error(`Unknown article slug: ${slug}`);
 }
 
-const categoriesWithoutPalette = new Set(["EC・買い物ガイド", "トレンド・特集"]);
-const shouldShowPalette = !categoriesWithoutPalette.has(row.category);
+const articleTypesWithoutPalette = new Set(["GUIDE", "FEATURE"]);
+const shouldShowPalette =
+  !articleTypesWithoutPalette.has(row.articleType) &&
+  row.mainColor !== "複数" &&
+  row.subColor !== "複数" &&
+  row.accentColor !== "複数";
 
 const colorValues = {
   水色: "#A9CAE8",

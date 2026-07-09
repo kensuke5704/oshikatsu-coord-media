@@ -19,7 +19,7 @@ export default function ArticlesPage() {
             記事一覧
           </h1>
           <span>
-            推し別、推し色、テイスト別、アイテム別、買い物ガイドまで横断して探せます。
+            LOOK、COLOR、STYLE、SCENE、GUIDE、FEATUREを横断して探せます。
           </span>
         </div>
         <div className="mt-9">

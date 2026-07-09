@@ -17,11 +17,13 @@ export function getArticleSearchIndex(): ArticleSearchItem[] {
   return articleDetails.map((article) => ({
     slug: article.slug,
     title: article.title,
-    category: article.category,
+    menuLabel: article.menuLabel,
     excerpt: article.excerpt,
     searchText: [
       article.title,
-      article.category,
+      article.articleType,
+      article.featureType,
+      article.menuLabel,
       article.characterName,
       article.workName,
       article.description,
@@ -32,6 +34,7 @@ export function getArticleSearchIndex(): ArticleSearchItem[] {
       flattenText(article.moodKeywords),
       flattenText(article.scenes),
       flattenText(article.itemTypes),
+      flattenText(article.tags),
       flattenText(article.summary),
       flattenText(article.introduction),
       flattenText(article.colorPoints),

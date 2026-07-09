@@ -22,7 +22,7 @@ if (!rowsMatch) {
 const articleRows = JSON.parse(rowsMatch[1]);
 const outputWidth = imageConfig.width;
 const outputHeight = imageConfig.height;
-const noPaletteCategories = new Set(imageConfig.noPaletteCategories ?? []);
+const noPaletteArticleTypes = new Set(imageConfig.noPaletteArticleTypes ?? []);
 
 const sourceBySlug = {
   "hatsune-miku-bound-coordinate": "ig_0661d3e079a669bd016a4e62ce9da48191a2a8fb5dd9ec70a2.png",
@@ -115,6 +115,15 @@ function gridSvg() {
   `);
 }
 
+function shouldShowPalette(row) {
+  return (
+    !noPaletteArticleTypes.has(row.articleType) &&
+    row.mainColor !== "複数" &&
+    row.subColor !== "複数" &&
+    row.accentColor !== "複数"
+  );
+}
+
 function accessorySvg() {
   return Buffer.from(`
     <svg width="900" height="900" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
@@ -157,7 +166,7 @@ async function finalizeArticleImages() {
     }
 
     const layers = [{ input: gridSvg(), blend: "over" }];
-    if (!noPaletteCategories.has(row.category)) {
+    if (shouldShowPalette(row)) {
       layers.push({ input: paletteSvg(row), blend: "over" });
     }
 
@@ -226,14 +235,15 @@ function updateHistory() {
   const nextEntries = articleRows.map((row) => ({
     slug: row.slug,
     imageRevision: imageConfig.imageRevision,
-    category: row.category,
+    articleType: row.articleType,
+    menuLabel: row.menuLabel,
     sourceImage: sourceBySlug[row.slug],
     outputImage: `/images/articles/${row.slug}-${imageConfig.imageRevision}.png`,
-    paletteCards: !noPaletteCategories.has(row.category),
+    paletteCards: shouldShowPalette(row),
     layout: "1024x1536; 2x2 grid split exactly at x=512/y=768; top-left and bottom-right full-body; top-right and bottom-left detail.",
-    panelRule: !noPaletteCategories.has(row.category)
+    panelRule: shouldShowPalette(row)
       ? "Three fixed cards, 260x350, 16px gap, centered at x=382, group center at 50% height, ordered main/sub/accent."
-      : "No palette cards for this category.",
+      : "No palette cards for GUIDE/FEATURE or articles with mixed colors.",
     avoidNext: "Avoid matching both pose and background. Do not repeat full-body stance, detail target, camera angle, or light mood from this output.",
     generatedAt,
   }));
