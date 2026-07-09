@@ -22,7 +22,7 @@ export function ArticleCard({
     >
       <Link
         href={`/articles/${article.slug}`}
-        className={`relative block overflow-hidden bg-[#f4eeeb] ${
+        className={`relative block overflow-hidden bg-[#fff0f6] ${
           priority ? "min-h-[340px] md:min-h-full" : "aspect-[4/3]"
         }`}
         aria-label={article.title}
@@ -36,23 +36,23 @@ export function ArticleCard({
           priority={priority}
         />
         <span className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-transparent" />
-        <span className="absolute left-4 top-4 rounded-[4px] bg-white/88 px-3 py-1 text-[11px] font-black text-[#b66f79]">
+        <span className="absolute left-4 top-4 rounded-[4px] bg-[#ff4f8b] px-3 py-1 text-[11px] font-black text-white">
           {article.menuLabel}
         </span>
       </Link>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3">
-          <span className="text-xs font-black text-[#b66f79]">
+          <span className="text-xs font-black text-[#ff4f8b]">
             {article.menuLabel}
           </span>
           {article.tags[0] ? (
-            <span className="rounded-[4px] bg-[#fff7f8] px-2.5 py-1 text-[10px] font-black text-[#7e6f68]">
+            <span className="rounded-[4px] border border-[#b7eee7] bg-[#f3fffd] px-2.5 py-1 text-[10px] font-black text-[#278f84]">
               #{article.tags[0]}
             </span>
           ) : null}
         </div>
         <h2
-          className={`article-card-title mt-4 text-[#2b2522] transition group-hover:text-[#b66f79] ${
+          className={`article-card-title mt-4 text-[#2b2522] transition group-hover:text-[#e62f6d] ${
             priority
               ? "text-[1.25rem] leading-[1.65] sm:text-[1.45rem] sm:leading-[1.58]"
               : "text-[1.02rem] leading-[1.72] sm:text-[1.08rem]"
@@ -69,7 +69,7 @@ export function ArticleCard({
             .map((color) => (
               <span
                 key={color}
-                className="rounded-[4px] border border-[#eadfda] bg-[#fffaf7] px-3 py-1 text-xs font-bold text-[#6b514a]"
+                className="rounded-[4px] border border-[#ffd5df] bg-[#fff7fb] px-3 py-1 text-xs font-bold text-[#8b5667]"
               >
                 {color}
               </span>

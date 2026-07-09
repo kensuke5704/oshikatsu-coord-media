@@ -48,48 +48,31 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-20 border-b border-[#e8e1dd] bg-[#fffdfb]/94 backdrop-blur">
-      <div className="relative mx-auto flex min-h-[74px] max-w-7xl items-center lg:hidden">
-        <div className="scrollbar-none flex max-w-full flex-1 overflow-x-auto overscroll-x-contain pl-4 pr-[76px]">
-          <Link href="/" className="mx-auto inline-flex min-w-max flex-col items-center px-3 text-center">
-            <span className="brand-logo block whitespace-nowrap text-[22px] leading-none text-[#2b2522]">
-              oshikatsu coord
-            </span>
-            <span className="mt-1 block whitespace-nowrap text-[11px] font-medium tracking-[0.12em] text-[#8b7b74]">
-              推し活と日常服の小さな編集室
-            </span>
-          </Link>
-        </div>
-        <button
-          type="button"
-          className="absolute right-4 top-1/2 grid size-11 shrink-0 -translate-y-1/2 place-items-center rounded-[4px] border border-[#eadfda] bg-white text-[#6b514a] transition hover:border-[#b66f79]/50 hover:text-[#b66f79] active:scale-[0.98]"
-          aria-label="記事を検索する"
-          aria-expanded={isSearchOpen}
-          onClick={() => setIsSearchOpen((current) => !current)}
-        >
-          <MagnifyingGlass size={22} weight="bold" />
-        </button>
-      </div>
-      <div className="mx-auto hidden min-h-[74px] max-w-7xl items-center justify-center gap-16 px-8 lg:flex xl:gap-24 2xl:gap-32">
-        <Link href="/" className="inline-flex min-w-max flex-col items-start justify-self-start text-left">
-          <span className="brand-logo block whitespace-nowrap text-[26px] leading-none text-[#2b2522]">
-            oshikatsu coord
-          </span>
-          <span className="mt-1 block whitespace-nowrap text-[11px] font-medium tracking-[0.12em] text-[#8b7b74]">
-            推し活と日常服の小さな編集室
-          </span>
-        </Link>
-        <div className="min-w-0">
+    <header className="sticky top-0 z-20 border-b border-[#f5ccd8] bg-white/94 backdrop-blur">
+      <div className="mx-auto grid min-h-[74px] max-w-7xl grid-cols-[44px_minmax(0,1fr)_44px] items-center gap-3 px-4 sm:px-6 lg:grid-cols-[1fr_auto_1fr] lg:px-8">
+        <div className="min-w-0 justify-self-start">
           <Link
             href="/categories"
-            className="text-xs font-bold tracking-[0.16em] text-[#7e6f68] transition hover:text-[#b66f79]"
+            className="hidden text-xs font-black tracking-[0.16em] text-[#ff4f8b] transition hover:text-[#f22f6d] lg:block"
           >
             CATEGORY
           </Link>
         </div>
+        <div className="min-w-0 justify-self-stretch text-center lg:w-auto lg:justify-self-center">
+          <div className="scrollbar-none max-w-full overflow-x-auto overscroll-x-contain whitespace-nowrap px-1 lg:overflow-visible lg:px-0">
+            <Link href="/" className="inline-flex min-w-max flex-col items-center px-3 sm:px-0">
+              <span className="brand-logo block whitespace-nowrap text-[22px] leading-none text-[#2b2522] sm:text-[26px]">
+                oshikatsu coord
+              </span>
+              <span className="mt-1 block whitespace-nowrap text-[11px] font-medium tracking-[0.12em] text-[#8b7b74]">
+                推し活と日常服の小さな編集室
+              </span>
+            </Link>
+          </div>
+        </div>
         <button
           type="button"
-          className="grid size-11 shrink-0 place-items-center rounded-[4px] border border-[#eadfda] bg-white text-[#6b514a] transition hover:border-[#b66f79]/50 hover:text-[#b66f79] active:translate-y-px"
+          className="grid size-11 shrink-0 place-items-center justify-self-end rounded-[4px] border border-[#ffd5df] bg-white text-[#6b514a] transition hover:border-[#ff4f8b]/60 hover:text-[#ff4f8b] active:translate-y-px"
           aria-label="記事を検索する"
           aria-expanded={isSearchOpen}
           onClick={() => setIsSearchOpen((current) => !current)}
@@ -104,10 +87,10 @@ export function Header() {
       >
         <div className="mx-auto max-w-3xl px-4 py-4 sm:px-6">
           <form
-            className="flex items-center gap-2 rounded-[4px] border border-[#e3d7d1] bg-white px-4 py-3 shadow-[0_8px_24px_rgba(80,54,45,0.05)]"
+            className="flex items-center gap-2 rounded-[4px] border border-[#ffd5df] bg-white px-4 py-3 shadow-[0_8px_24px_rgba(255,79,139,0.09)]"
             onSubmit={handleSearch}
           >
-            <MagnifyingGlass size={20} weight="bold" className="shrink-0 text-[#b66f79]" />
+            <MagnifyingGlass size={20} weight="bold" className="shrink-0 text-[#ff4f8b]" />
             <input
               name="q"
               value={keyword}
@@ -139,7 +122,7 @@ export function Header() {
             </div>
             <button
               type="button"
-              className="shrink-0 text-xs font-black tracking-[0.12em] text-[#8b7b74] transition hover:text-[#b66f79]"
+              className="shrink-0 text-xs font-black tracking-[0.12em] text-[#8b7b74] transition hover:text-[#ff4f8b]"
               onClick={() => {
                 setKeyword("");
                 setIsSearchOpen(false);

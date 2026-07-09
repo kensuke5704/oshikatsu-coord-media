@@ -46,12 +46,12 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="space-y-14">
           {topicSections.map((topic) => (
-            <section key={topic.title} className="border-t border-[#eadfda] pt-8">
+            <section key={topic.title} className="home-topic-section pt-8">
               <div className="mb-6 flex items-end justify-between gap-5">
                 <h2 className="home-topic-title">{topic.title}</h2>
                 <Link
                   href={topic.href}
-                  className="ui-action"
+                  className="ui-action home-topic-action"
                 >
                   ALL
                 </Link>
@@ -70,16 +70,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
+      <section className="home-ranking-section mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
         <h2 className="home-topic-title">よく読まれている記事</h2>
         <ol className="mt-7 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
           {ranking.map((article, index) => (
             <li key={article.slug} className="min-w-0">
               <Link
                 href={`/articles/${article.slug}`}
-                className="group grid h-full grid-cols-[84px_minmax(0,1fr)] gap-3 rounded-[4px] border border-[#eadfda] bg-white p-3 transition hover:-translate-y-0.5 hover:border-[#b66f79]/40 md:grid-cols-[92px_minmax(0,1fr)] xl:block"
+                className="group grid h-full grid-cols-[84px_minmax(0,1fr)] gap-3 rounded-[6px] border border-[#ffd5df] bg-white p-3 shadow-[0_8px_22px_rgba(255,79,139,0.07)] transition hover:-translate-y-0.5 hover:border-[#ff4f8b]/45 md:grid-cols-[92px_minmax(0,1fr)] xl:block"
               >
-                <span className="relative block aspect-square overflow-hidden rounded-[4px] bg-[#f4eeeb] xl:mb-3">
+                <span className="relative block aspect-square overflow-hidden rounded-[6px] bg-[#fff0f6] xl:mb-3">
                   <Image
                     src={`${assetBasePath}${article.thumbnailImage}`}
                     alt={article.thumbnailAlt}
@@ -87,15 +87,15 @@ export default function HomePage() {
                     sizes="(min-width: 1280px) 18vw, 92px"
                     className="object-cover transition duration-500 group-hover:scale-[1.04]"
                   />
-                  <span className="absolute left-2 top-2 grid size-7 place-items-center rounded-[4px] bg-white/90 text-sm font-black text-[#b66f79]">
+                  <span className="absolute left-2 top-2 grid size-7 place-items-center rounded-[4px] bg-[#ff4f8b] text-sm font-black text-white">
                     {index + 1}
                   </span>
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-[11px] font-extrabold text-[#b66f79]">
+                  <span className="block text-[11px] font-extrabold text-[#ff4f8b]">
                     {article.menuLabel}
                   </span>
-                  <span className="mt-1 line-clamp-3 block text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#b66f79]">
+                  <span className="mt-1 line-clamp-3 block text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#e62f6d]">
                     {article.title}
                   </span>
                 </span>

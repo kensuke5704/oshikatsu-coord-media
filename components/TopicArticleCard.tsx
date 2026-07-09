@@ -12,7 +12,7 @@ export function TopicArticleCard({ article }: { article: ArticleSummary }) {
     <article className="group w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
       <Link
         href={`/articles/${article.slug}`}
-        className="relative block aspect-square overflow-hidden rounded-[4px] border border-[#eadfda] bg-[#f4eeeb]"
+        className="relative block aspect-square overflow-hidden rounded-[6px] border border-[#ffd5df] bg-[#fff0f6] shadow-[0_8px_22px_rgba(255,79,139,0.08)]"
         aria-label={article.title}
       >
         <Image
@@ -24,19 +24,19 @@ export function TopicArticleCard({ article }: { article: ArticleSummary }) {
         />
       </Link>
       <div className="mt-3 flex flex-wrap gap-1.5">
-        <span className="rounded-[4px] bg-[#fff1f3] px-2.5 py-1 text-[10px] font-black text-[#b66f79]">
+        <span className="rounded-[4px] bg-[#ff4f8b] px-2.5 py-1 text-[10px] font-black text-white">
           {article.menuLabel}
         </span>
         {article.tags.slice(0, 1).map((tag) => (
           <span
             key={tag}
-            className="rounded-[4px] border border-[#eadfda] bg-white px-2.5 py-1 text-[10px] font-black text-[#7e6f68]"
+            className="rounded-[4px] border border-[#b7eee7] bg-[#f3fffd] px-2.5 py-1 text-[10px] font-black text-[#278f84]"
           >
             #{tag}
           </span>
         ))}
       </div>
-      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#b66f79]">
+      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#e62f6d]">
         <Link href={`/articles/${article.slug}`}>{article.title}</Link>
       </h3>
     </article>
@@ -46,10 +46,10 @@ export function TopicArticleCard({ article }: { article: ArticleSummary }) {
 export function TopicArticlePlaceholder() {
   return (
     <article className="w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
-      <div className="grid aspect-square place-items-center rounded-[4px] border border-dashed border-[#d7c5bf] bg-[#f1eeeb]">
-        <span className="text-xs font-black tracking-[0.18em] text-[#a89b95]">COMING SOON</span>
+      <div className="grid aspect-square place-items-center rounded-[6px] border border-dashed border-[#ffd5df] bg-[#fff7fb]">
+        <span className="text-xs font-black tracking-[0.18em] text-[#ff7aa8]">COMING SOON</span>
       </div>
-      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#9a8d87]">
+      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#b38b98]">
         記事準備中
       </h3>
     </article>
