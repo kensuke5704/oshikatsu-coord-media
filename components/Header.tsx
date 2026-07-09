@@ -47,7 +47,7 @@ export function Header({ searchItems }: { searchItems: ArticleSearchItem[] }) {
 
   return (
     <header className="sticky top-0 z-20 border-b border-[#e8e1dd] bg-[#fffdfb]/94 backdrop-blur">
-      <div className="mx-auto grid min-h-[74px] max-w-7xl grid-cols-[44px_1fr_44px] items-center gap-3 px-4 sm:px-6 lg:grid-cols-[1fr_auto_1fr] lg:px-8">
+      <div className="mx-auto grid min-h-[74px] max-w-7xl grid-cols-[44px_minmax(0,1fr)_44px] items-center gap-3 px-4 sm:px-6 lg:grid-cols-[1fr_auto_1fr] lg:px-8">
         <div className="min-w-0 justify-self-start">
           <Link
             href="/categories"
@@ -56,14 +56,18 @@ export function Header({ searchItems }: { searchItems: ArticleSearchItem[] }) {
             CATEGORY
           </Link>
         </div>
-        <Link href="/" className="justify-self-center text-center">
-          <span className="brand-logo block whitespace-nowrap text-[22px] leading-none text-[#2b2522] sm:text-[26px]">
-            oshikatsu coord
-          </span>
-          <span className="mt-1 block whitespace-nowrap text-[11px] font-medium tracking-[0.12em] text-[#8b7b74]">
-            推し活と日常服の小さな編集室
-          </span>
-        </Link>
+        <div className="min-w-0 justify-self-stretch text-center lg:w-auto lg:justify-self-center">
+          <div className="scrollbar-none max-w-full overflow-x-auto overscroll-x-contain whitespace-nowrap px-1 lg:overflow-visible lg:px-0">
+            <Link href="/" className="inline-flex min-w-max flex-col items-center px-3 sm:px-0">
+              <span className="brand-logo block whitespace-nowrap text-[22px] leading-none text-[#2b2522] sm:text-[26px]">
+                oshikatsu coord
+              </span>
+              <span className="mt-1 block whitespace-nowrap text-[11px] font-medium tracking-[0.12em] text-[#8b7b74]">
+                推し活と日常服の小さな編集室
+              </span>
+            </Link>
+          </div>
+        </div>
         <button
           type="button"
           className="grid size-11 shrink-0 place-items-center justify-self-end rounded-[4px] border border-[#eadfda] bg-white text-[#6b514a] transition hover:border-[#b66f79]/50 hover:text-[#b66f79] active:translate-y-px"
