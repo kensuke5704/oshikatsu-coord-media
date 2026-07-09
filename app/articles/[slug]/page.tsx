@@ -80,7 +80,7 @@ export default async function ArticlePage({
         </div>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
-          <div>
+          <div className="min-w-0">
             <span className="rounded-full bg-[#2f929b] px-4 py-2 text-sm font-black text-white">
               {detail.menuLabel}
             </span>
@@ -146,7 +146,7 @@ export default async function ArticlePage({
                       <img
                         src={`${basePath}/images/articles/item-composition-hatsune-miku-v1.png`}
                         alt={`${detail.title}のアイテム構成イラスト`}
-                        className="h-full min-h-[320px] w-full object-cover"
+                        className="block h-full min-h-[320px] w-full max-w-full object-cover"
                         loading="lazy"
                       />
                     </div>
