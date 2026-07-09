@@ -6,7 +6,7 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 import type { ArticleSearchItem } from "@/lib/types";
 
 const navItems = [
-  { href: "/", label: "ホーム" },
+  { href: "/", label: "HOME" },
   { href: "/categories/look", label: "LOOK" },
   { href: "/categories/color", label: "COLOR" },
   { href: "/categories/style", label: "STYLE" },
