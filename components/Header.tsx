@@ -15,6 +15,17 @@ const navItems = [
   { href: "/categories/feature", label: "FEATURE" },
 ];
 
+const searchSuggestions = [
+  "推し色",
+  "ライブ参戦服",
+  "アクスタ",
+  "痛バ",
+  "プチプラ",
+  "水色",
+  "シルバー",
+  "学校帰り",
+];
+
 function normalizeKeyword(value: string) {
   return value.trim().toLowerCase();
 }
@@ -55,7 +66,7 @@ export function Header({ searchItems }: { searchItems: ArticleSearchItem[] }) {
         </Link>
         <button
           type="button"
-          className="grid size-11 shrink-0 place-items-center justify-self-end rounded-full bg-[#f4eeeb] text-[#6b514a] transition hover:bg-[#eadfda] hover:text-[#b66f79] active:translate-y-px"
+          className="grid size-11 shrink-0 place-items-center justify-self-end rounded-[4px] border border-[#eadfda] bg-white text-[#6b514a] transition hover:border-[#b66f79]/50 hover:text-[#b66f79] active:translate-y-px"
           aria-label="記事を検索する"
           aria-expanded={isSearchOpen}
           onClick={() => setIsSearchOpen((current) => !current)}
@@ -69,7 +80,7 @@ export function Header({ searchItems }: { searchItems: ArticleSearchItem[] }) {
         }`}
       >
         <div className="mx-auto max-w-3xl px-4 py-4 sm:px-6">
-          <div className="flex items-center gap-2 rounded-[8px] border border-[#e3d7d1] bg-white px-4 py-3 shadow-[0_16px_42px_rgba(80,54,45,0.08)]">
+          <div className="flex items-center gap-2 rounded-[4px] border border-[#e3d7d1] bg-white px-4 py-3 shadow-[0_8px_24px_rgba(80,54,45,0.05)]">
             <MagnifyingGlass size={20} weight="bold" className="shrink-0 text-[#b66f79]" />
             <input
               value={keyword}
@@ -89,7 +100,19 @@ export function Header({ searchItems }: { searchItems: ArticleSearchItem[] }) {
               閉じる
             </button>
           </div>
-          <div className="mt-3 overflow-hidden rounded-[8px] border border-[#eadfda] bg-white">
+          <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+            {searchSuggestions.map((suggestion) => (
+              <button
+                key={suggestion}
+                type="button"
+                onClick={() => setKeyword(suggestion)}
+                className="ui-chip ui-chip-accent"
+              >
+                #{suggestion}
+              </button>
+            ))}
+          </div>
+          <div className="mt-3 overflow-hidden rounded-[4px] border border-[#eadfda] bg-white">
             {results.length > 0 ? (
               results.map((article) => (
                 <Link

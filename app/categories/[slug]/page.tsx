@@ -34,6 +34,9 @@ export default async function CategoryPage({
   }
 
   const categoryArticles = getArticlesByCategory(category.slug);
+  const categoryTags = Array.from(
+    new Set(categoryArticles.flatMap((article) => article.tags).filter(Boolean)),
+  ).slice(0, 8);
 
   return (
     <SiteShell>
@@ -47,13 +50,25 @@ export default async function CategoryPage({
             {category.description}
           </span>
         </div>
+        {categoryTags.length > 0 ? (
+          <div className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 sm:pb-0">
+            {categoryTags.map((tag) => (
+              <span
+                key={tag}
+                className="ui-chip ui-chip-accent"
+              >
+                #{tag}
+              </span>
+            ))}
+          </div>
+        ) : null}
         <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {categoryArticles.map((article) => (
             <ArticleCard key={article.slug} article={article} />
           ))}
         </div>
         {categoryArticles.length === 0 ? (
-          <div className="mt-8 rounded-[8px] border border-[#eadfda] bg-white p-8 text-sm font-bold text-[#746863]">
+          <div className="mt-8 rounded-[4px] border border-[#eadfda] bg-white p-8 text-sm font-bold text-[#746863]">
             このカテゴリの記事は準備中です。
           </div>
         ) : null}

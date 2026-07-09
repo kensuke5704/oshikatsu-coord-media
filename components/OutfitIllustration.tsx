@@ -8,7 +8,7 @@ const basePath =
 
 export function OutfitIllustration({ image }: { image: ArticleImage }) {
   return (
-    <figure className="relative w-full max-w-full overflow-hidden rounded-[8px] border border-[#d7ecee] bg-white p-3">
+    <figure className="relative w-full max-w-full overflow-hidden rounded-[4px] border border-[#d7ecee] bg-white p-3">
       <Image
         src={`${basePath}${image.src}`}
         alt={image.alt}

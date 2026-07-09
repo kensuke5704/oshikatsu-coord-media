@@ -47,10 +47,10 @@ export function HomeCarousel({
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="relative overflow-hidden rounded-[8px] border border-[#eadfda] bg-[#f4eeeb] shadow-[0_16px_50px_rgba(65,45,38,0.07)]">
+      <div className="relative overflow-hidden rounded-[4px] border border-[#eadfda] bg-[#f4eeeb] shadow-[0_8px_28px_rgba(65,45,38,0.055)]">
         <Link
           href={`/articles/${activeArticle.slug}`}
-          className="relative mx-auto block aspect-[2/3] max-h-[560px] min-h-[360px] w-full max-w-[420px] overflow-hidden bg-[#f4eeeb] sm:aspect-[16/7] sm:min-h-[280px] sm:max-h-none sm:max-w-none lg:min-h-[340px]"
+          className="relative mx-auto block aspect-[4/5] max-h-[500px] min-h-[300px] w-full max-w-[420px] overflow-hidden bg-[#f4eeeb] sm:aspect-[16/7] sm:min-h-[280px] sm:max-h-none sm:max-w-none lg:min-h-[340px]"
           aria-label={activeArticle.title}
         >
           <Image
@@ -69,7 +69,7 @@ export function HomeCarousel({
             <button
               type="button"
               onClick={controls.prev}
-              className="grid size-10 place-items-center rounded-full border border-white/70 bg-white/86 text-[#6b514a] shadow-[0_10px_30px_rgba(65,45,38,0.12)] backdrop-blur transition hover:bg-white hover:text-[#b66f79] active:translate-y-px"
+              className="grid size-10 place-items-center rounded-[4px] border border-white/80 bg-white/88 text-[#6b514a] backdrop-blur transition hover:bg-white hover:text-[#b66f79] active:translate-y-px"
               aria-label="前の特集記事"
             >
               <CaretLeft size={19} weight="bold" />
@@ -77,7 +77,7 @@ export function HomeCarousel({
             <button
               type="button"
               onClick={controls.next}
-              className="grid size-10 place-items-center rounded-full border border-white/70 bg-white/86 text-[#6b514a] shadow-[0_10px_30px_rgba(65,45,38,0.12)] backdrop-blur transition hover:bg-white hover:text-[#b66f79] active:translate-y-px"
+              className="grid size-10 place-items-center rounded-[4px] border border-white/80 bg-white/88 text-[#6b514a] backdrop-blur transition hover:bg-white hover:text-[#b66f79] active:translate-y-px"
               aria-label="次の特集記事"
             >
               <CaretRight size={19} weight="bold" />
@@ -89,7 +89,7 @@ export function HomeCarousel({
                 key={article.slug}
                 type="button"
                 onClick={() => setActiveIndex(index)}
-                className={`h-2 w-6 rounded-full shadow-[0_6px_18px_rgba(65,45,38,0.12)] transition sm:w-8 ${
+                className={`h-2 w-6 rounded-[2px] transition sm:w-8 ${
                   index === activeIndex ? "bg-white" : "bg-white/46 hover:bg-white/72"
                 }`}
                 aria-label={`${index + 1}番目の特集記事を表示`}

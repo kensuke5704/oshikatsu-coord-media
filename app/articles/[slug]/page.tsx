@@ -76,27 +76,48 @@ export default async function ArticlePage({
           <span className="px-2">/</span>
           <Link href={`/categories/${detail.categorySlug}`}>{detail.menuLabel}</Link>
           <span className="px-2">/</span>
-          <span>{detail.title}</span>
+          <span className="hidden sm:inline">{detail.title}</span>
+          <span className="sm:hidden">ARTICLE</span>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="min-w-0">
-            <span className="rounded-full bg-[#2f929b] px-4 py-2 text-sm font-black text-white">
+            <span className="inline-flex rounded-[4px] bg-[#2f929b] px-3 py-1.5 text-xs font-black tracking-[0.06em] text-white">
               {detail.menuLabel}
             </span>
             <h1 className="article-title mt-5 max-w-4xl text-[1.72rem] leading-[1.55] text-[#2b2522] sm:text-[2.05rem] lg:text-[2.28rem]">
               {detail.title}
             </h1>
-            <div className="mt-5 flex flex-wrap items-center gap-5 text-sm font-bold text-[#66777b]">
+            <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-bold text-[#66777b]">
               <span className="inline-flex items-center gap-2">
                 <Tag size={18} />
                 {detail.mainColor}×{detail.subColor}
               </span>
+              {detail.tags.slice(0, 5).map((tag) => (
+                <span
+                  key={tag}
+                  className="ui-chip ui-chip-accent px-2.5 py-1 text-[11px]"
+                >
+                  #{tag}
+                </span>
+              ))}
             </div>
 
             <div className="mt-7">
               <DisclosureNotice />
             </div>
+
+            <section className="mt-6 rounded-[4px] border border-[#eadfda] bg-white p-5 lg:hidden">
+              <h2 className="text-base font-black text-[#2b2522]">この記事でわかること</h2>
+              <ul className="mt-3 space-y-2">
+                {detail.summary.slice(0, 4).map((item) => (
+                  <li key={item} className="flex gap-2 text-sm font-bold leading-7 text-[#4a403b]">
+                    <span className="mt-[0.55rem] size-1.5 shrink-0 bg-[#b66f79]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
 
             <div className="article-body mt-8 text-base font-medium text-[#1d3337]">
               {detail.introduction.map((paragraph) => (
@@ -109,7 +130,7 @@ export default async function ArticlePage({
                 <section className="mt-10">
                   <SectionHeading number="01" title="カラー＆雰囲気のポイント" />
                   <div className={`grid gap-5 ${shouldShowPalette ? "lg:grid-cols-[0.82fr_1.18fr]" : ""}`}>
-                    <div className="soft-card rounded-[8px] p-5">
+                    <div className="soft-card rounded-[4px] p-5">
                       <ul className="space-y-3 text-sm font-bold leading-7 text-[#1d3337]">
                         {detail.colorPoints.map((point) => (
                           <li key={point} className="flex gap-3">
@@ -141,10 +162,10 @@ export default async function ArticlePage({
 
                 <section className="mt-10">
                   <SectionHeading number="04" title="アイテム構成" />
-                  <div className="grid gap-6 rounded-[8px] border border-[#d7ecee] bg-white p-4 md:grid-cols-[minmax(0,0.9fr)_minmax(280px,1fr)] md:p-5">
-                    <div className="overflow-hidden rounded-[8px] bg-[#f6fbfb]">
+                  <div className="grid gap-6 rounded-[4px] border border-[#d7ecee] bg-white p-4 md:grid-cols-[minmax(0,0.9fr)_minmax(280px,1fr)] md:p-5">
+                    <div className="overflow-hidden rounded-[4px] bg-[#f6fbfb]">
                       <img
-                        src={`${basePath}/images/articles/item-composition-hatsune-miku-v1.png`}
+                        src={`${basePath}${mainImage.src}`}
                         alt={`${detail.title}のアイテム構成イラスト`}
                         className="block h-full min-h-[320px] w-full max-w-full object-cover"
                         loading="lazy"
@@ -154,10 +175,10 @@ export default async function ArticlePage({
                       {detail.itemSections.map((section, index) => (
                         <section
                           key={section.heading}
-                          className="rotate-[-0.35deg] rounded-[8px] border border-[#9fd4d8] bg-[#fffdf7] p-4 shadow-[0_10px_28px_rgba(37,105,112,0.08)] even:rotate-[0.35deg]"
+                          className="rounded-[4px] border border-[#9fd4d8] bg-[#fffdf7] p-4 shadow-[0_8px_20px_rgba(37,105,112,0.045)]"
                         >
                           <div className="flex items-start gap-3">
-                            <span className="grid size-8 shrink-0 place-items-center rounded-full bg-[#2f929b] text-sm font-black text-white">
+                            <span className="grid size-8 shrink-0 place-items-center rounded-[4px] bg-[#2f929b] text-sm font-black text-white">
                               {index + 1}
                             </span>
                             <div>
@@ -176,7 +197,7 @@ export default async function ArticlePage({
                 </section>
 
                 <section className="mt-10">
-                  <div className="rounded-[8px] border border-[#9fd4d8] bg-[#f4fbfb] p-5">
+                  <div className="rounded-[4px] border border-[#9fd4d8] bg-[#f4fbfb] p-5">
                     <h2 className="text-2xl font-black text-[#2f929b]">着こなしのポイント</h2>
                     <div className="mt-4 space-y-4">
                       {detail.stylingPoints.map((point) => (
@@ -196,7 +217,7 @@ export default async function ArticlePage({
                 {(detail.editorialSections ?? []).map((section, index) => (
                   <section key={section.heading}>
                     <SectionHeading number={String(index + 1).padStart(2, "0")} title={section.heading} />
-                    <div className="article-body rounded-[8px] border border-[#eadfda] bg-white p-5 text-base font-medium text-[#1d3337] sm:p-6">
+                    <div className="article-body rounded-[4px] border border-[#eadfda] bg-white p-5 text-base font-medium text-[#1d3337] sm:p-6">
                       {section.body.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}
@@ -206,7 +227,7 @@ export default async function ArticlePage({
               </div>
             )}
 
-            <section className="mt-10 rounded-[8px] border border-[#d7ecee] bg-white p-6">
+            <section className="mt-10 rounded-[4px] border border-[#d7ecee] bg-white p-6">
               <h2 className="text-2xl font-black text-[#1d3337]">まとめ</h2>
               <div className="article-body text-base font-medium text-[#1d3337]">
                 {detail.conclusion.map((paragraph) => (
@@ -218,9 +239,11 @@ export default async function ArticlePage({
             {footerRelated.length > 0 ? (
               <section className="mt-10">
                 <SectionHeading number={shouldUseCoordinateLayout ? "05" : "05"} title="関連記事" />
-                <div className="grid gap-5 md:grid-cols-3">
+                <div className="-mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:px-0 md:pb-0">
                   {footerRelated.map((article) => (
-                    <ArticleCard key={article.slug} article={article} />
+                    <div key={article.slug} className="w-[78vw] min-w-[78vw] snap-start md:w-auto md:min-w-0">
+                      <ArticleCard article={article} />
+                    </div>
                   ))}
                 </div>
               </section>

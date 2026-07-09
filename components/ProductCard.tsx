@@ -12,7 +12,7 @@ export function ProductCard({ product }: { product: Product }) {
       : product.imageUrl;
 
   return (
-    <article className="flex h-full w-[168px] shrink-0 snap-start flex-col overflow-hidden rounded-[8px] border border-[#d7ecee] bg-white sm:w-auto sm:shrink">
+    <article className="flex h-full w-[168px] shrink-0 snap-start flex-col overflow-hidden rounded-[4px] border border-[#d7ecee] bg-white sm:w-auto sm:shrink">
       <div className="grid aspect-square place-items-center border-b border-[#e3f1f2] bg-[#f6fbfb] p-3 sm:aspect-[4/3] sm:p-4">
         {imageSrc ? (
           <img
@@ -47,7 +47,7 @@ export function ProductCard({ product }: { product: Product }) {
           href={product.affiliateUrl}
           target="_blank"
           rel="sponsored noopener noreferrer"
-          className="mt-3 inline-flex min-h-10 items-center justify-center rounded-[8px] bg-[#e47a8a] px-3 text-xs font-black text-white transition hover:bg-[#d86678] active:translate-y-px sm:mt-4 sm:min-h-11 sm:px-4 sm:text-sm"
+          className="mt-3 inline-flex min-h-10 items-center justify-center rounded-[4px] border border-[#d86678] bg-[#e47a8a] px-3 text-xs font-black text-white transition hover:bg-[#d86678] active:translate-y-px sm:mt-4 sm:min-h-11 sm:px-4 sm:text-sm"
         >
           商品ページを見る
         </a>

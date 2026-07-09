@@ -16,7 +16,7 @@ export function ArticleCard({
 }) {
   return (
     <article
-      className={`group media-card fade-up flex h-full flex-col overflow-hidden rounded-[8px] bg-white ${
+      className={`group media-card fade-up flex h-full flex-col overflow-hidden rounded-[4px] bg-white ${
         priority ? "md:grid md:grid-cols-[1.05fr_0.95fr]" : ""
       }`}
     >
@@ -36,15 +36,20 @@ export function ArticleCard({
           priority={priority}
         />
         <span className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-transparent" />
-        <span className="absolute left-5 top-5 rounded-full bg-white/88 px-3 py-1 text-[11px] font-medium text-[#6b514a] shadow-[0_8px_24px_rgba(65,45,38,0.08)]">
+        <span className="absolute left-4 top-4 rounded-[4px] bg-white/88 px-3 py-1 text-[11px] font-black text-[#b66f79]">
           {article.menuLabel}
         </span>
       </Link>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3">
-          <span className="text-xs font-medium text-[#b66f79]">
+          <span className="text-xs font-black text-[#b66f79]">
             {article.menuLabel}
           </span>
+          {article.tags[0] ? (
+            <span className="rounded-[4px] bg-[#fff7f8] px-2.5 py-1 text-[10px] font-black text-[#7e6f68]">
+              #{article.tags[0]}
+            </span>
+          ) : null}
         </div>
         <h2
           className={`article-card-title mt-4 text-[#2b2522] transition group-hover:text-[#b66f79] ${
@@ -64,7 +69,7 @@ export function ArticleCard({
             .map((color) => (
               <span
                 key={color}
-                className="rounded-full border border-[#eadfda] bg-[#fffaf7] px-3 py-1 text-xs font-bold text-[#6b514a]"
+                className="rounded-[4px] border border-[#eadfda] bg-[#fffaf7] px-3 py-1 text-xs font-bold text-[#6b514a]"
               >
                 {color}
               </span>

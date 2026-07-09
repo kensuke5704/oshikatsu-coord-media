@@ -12,7 +12,7 @@ export function TopicArticleCard({ article }: { article: ArticleSummary }) {
     <article className="group w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
       <Link
         href={`/articles/${article.slug}`}
-        className="relative block aspect-square overflow-hidden rounded-[8px] border border-[#eadfda] bg-[#f4eeeb]"
+        className="relative block aspect-square overflow-hidden rounded-[4px] border border-[#eadfda] bg-[#f4eeeb]"
         aria-label={article.title}
       >
         <Image
@@ -22,10 +22,20 @@ export function TopicArticleCard({ article }: { article: ArticleSummary }) {
           sizes="(min-width: 1024px) 24vw, (min-width: 640px) 31vw, 88vw"
           className="object-cover transition duration-500 group-hover:scale-[1.04]"
         />
-        <span className="absolute left-3 top-3 rounded-full bg-white/88 px-3 py-1 text-[11px] font-bold text-[#6b514a] shadow-[0_8px_24px_rgba(65,45,38,0.08)]">
+      </Link>
+      <div className="mt-3 flex flex-wrap gap-1.5">
+        <span className="rounded-[4px] bg-[#fff1f3] px-2.5 py-1 text-[10px] font-black text-[#b66f79]">
           {article.menuLabel}
         </span>
-      </Link>
+        {article.tags.slice(0, 1).map((tag) => (
+          <span
+            key={tag}
+            className="rounded-[4px] border border-[#eadfda] bg-white px-2.5 py-1 text-[10px] font-black text-[#7e6f68]"
+          >
+            #{tag}
+          </span>
+        ))}
+      </div>
       <h3 className="mt-3 text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#b66f79]">
         <Link href={`/articles/${article.slug}`}>{article.title}</Link>
       </h3>
@@ -36,7 +46,7 @@ export function TopicArticleCard({ article }: { article: ArticleSummary }) {
 export function TopicArticlePlaceholder() {
   return (
     <article className="w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
-      <div className="grid aspect-square place-items-center rounded-[8px] border border-dashed border-[#d7c5bf] bg-[#f1eeeb]">
+      <div className="grid aspect-square place-items-center rounded-[4px] border border-dashed border-[#d7c5bf] bg-[#f1eeeb]">
         <span className="text-xs font-black tracking-[0.18em] text-[#a89b95]">COMING SOON</span>
       </div>
       <h3 className="mt-3 text-[15px] font-black leading-7 text-[#9a8d87]">

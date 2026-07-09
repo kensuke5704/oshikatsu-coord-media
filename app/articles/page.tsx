@@ -6,6 +6,8 @@ export const metadata = {
   title: "記事一覧 | oshikatsu coord",
 };
 
+const tagShortcuts = ["推し色", "ライブ", "コラボカフェ", "プチプラ", "シルバー", "バウンドコーデ"];
+
 export default function ArticlesPage() {
   const leadArticle = articles[0];
   const restArticles = articles.slice(1);
@@ -21,6 +23,16 @@ export default function ArticlesPage() {
           <span>
             LOOK、COLOR、STYLE、SCENE、GUIDE、FEATUREを横断して探せます。
           </span>
+        </div>
+        <div className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 sm:pb-0">
+          {tagShortcuts.map((tag) => (
+            <span
+              key={tag}
+              className="ui-chip ui-chip-accent"
+            >
+              #{tag}
+            </span>
+          ))}
         </div>
         <div className="mt-9">
           <ArticleCard article={leadArticle} priority />

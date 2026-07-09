@@ -26,7 +26,7 @@ export default function CategoriesPage() {
             <Link
               key={category.slug}
               href={`/categories/${category.slug}`}
-              className="category-tile fade-up rounded-[8px] bg-white p-6 transition hover:-translate-y-1 hover:shadow-[0_20px_48px_rgba(80,54,45,0.1)]"
+              className="category-tile fade-up rounded-[4px] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#b66f79]/40"
             >
               <div className="flex items-start justify-between gap-4">
                 <h2 className="text-xl font-black text-[#2b2522]">{category.name}</h2>

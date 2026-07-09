@@ -2,9 +2,9 @@ import { Info } from "@phosphor-icons/react/dist/ssr";
 
 export function DisclosureNotice() {
   return (
-    <div className="soft-card rounded-[8px] p-5">
+    <div className="soft-card rounded-[4px] p-5">
       <div className="flex gap-4">
-        <span className="grid size-9 shrink-0 place-items-center rounded-full bg-[#2f929b] text-white">
+        <span className="grid size-9 shrink-0 place-items-center rounded-[4px] bg-[#2f929b] text-white">
           <Info size={20} weight="bold" />
         </span>
         <div className="space-y-2 text-sm font-bold leading-7 text-[#1d3337]">
