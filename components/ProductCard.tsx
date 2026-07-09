@@ -12,7 +12,7 @@ export function ProductCard({ product }: { product: Product }) {
       : product.imageUrl;
 
   return (
-    <article className="flex h-full w-[168px] shrink-0 snap-start flex-col overflow-hidden rounded-[4px] border border-[#d7ecee] bg-white sm:w-auto sm:shrink">
+    <article className="flex h-full w-[208px] shrink-0 snap-start flex-col overflow-hidden rounded-[4px] border border-[#d7ecee] bg-white sm:w-auto sm:shrink">
       <div className="grid aspect-square place-items-center border-b border-[#e3f1f2] bg-[#f6fbfb] p-3 sm:aspect-[4/3] sm:p-4">
         {imageSrc ? (
           <img
@@ -35,7 +35,7 @@ export function ProductCard({ product }: { product: Product }) {
         )}
       </div>
       <div className="flex flex-1 flex-col p-3 sm:p-4">
-        <h3 className="text-sm font-black leading-snug text-[#1d3337] sm:text-base">
+        <h3 className="line-clamp-2 min-h-[2.5rem] text-sm font-black leading-snug text-[#1d3337] sm:text-base">
           {product.displayName}
         </h3>
         <p className="mt-1 text-xs font-bold text-[#66777b] sm:text-sm">{product.color}</p>
@@ -47,7 +47,7 @@ export function ProductCard({ product }: { product: Product }) {
           href={product.affiliateUrl}
           target="_blank"
           rel="sponsored noopener noreferrer"
-          className="mt-3 inline-flex min-h-10 items-center justify-center rounded-[4px] border border-[#d86678] bg-[#e47a8a] px-3 text-xs font-black text-white transition hover:bg-[#d86678] active:translate-y-px sm:mt-4 sm:min-h-11 sm:px-4 sm:text-sm"
+          className="mt-3 inline-flex min-h-10 items-center justify-center whitespace-nowrap rounded-[4px] border border-[#d86678] bg-[#e47a8a] px-3 text-xs font-black text-white transition hover:bg-[#d86678] active:translate-y-px sm:mt-4 sm:min-h-11 sm:px-4 sm:text-sm"
         >
           商品ページを見る
         </a>

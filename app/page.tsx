@@ -17,17 +17,6 @@ function createArticleSlots(sectionArticles: ArticleSummary[]) {
   return Array.from({ length: 3 }, (_, index) => sectionArticles[index] ?? null);
 }
 
-const popularTags = [
-  { label: "#推し色", href: "/categories/color" },
-  { label: "#ライブ参戦服", href: "/categories/scene" },
-  { label: "#アクスタ", href: "/articles/collaboration-cafe-oshikatsu-coordinate" },
-  { label: "#痛バ", href: "/articles/live-oshikatsu-coordinate" },
-  { label: "#プチプラ", href: "/articles/shein-oshikatsu-coordinate-guide" },
-  { label: "#学校帰り", href: "/categories/scene" },
-  { label: "#概念コーデ", href: "/categories/look" },
-  { label: "#シルバー小物", href: "/articles/silver-bag-oshikatsu-coordinate" },
-];
-
 export default function HomePage() {
   const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
   const assetBasePath =
@@ -54,39 +43,12 @@ export default function HomePage() {
     <SiteShell>
       <HomeCarousel articles={featuredArticles} assetBasePath={assetBasePath} />
 
-      <section className="mt-6 border-y border-[#eadfda] bg-[#fff7f8]/72">
-        <div className="mx-auto grid max-w-7xl gap-4 px-4 py-5 sm:px-6 lg:grid-cols-[180px_1fr] lg:items-center lg:px-8">
-          <div>
-            <p className="text-[11px] font-black tracking-[0.18em] text-[#b66f79]">
-              TREND TAGS
-            </p>
-            <h1 className="mt-1 text-lg font-black leading-7 text-[#2b2522] sm:text-xl">
-              今気になる言葉から探す
-            </h1>
-          </div>
-          <div className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 sm:pb-0">
-            {popularTags.map((tag) => (
-              <Link
-                key={tag.label}
-                href={tag.href}
-                className="ui-chip snap-start"
-              >
-                {tag.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="space-y-14">
           {topicSections.map((topic) => (
             <section key={topic.title} className="border-t border-[#eadfda] pt-8">
               <div className="mb-6 flex items-end justify-between gap-5">
-                <div className="section-title">
-                  <p>New articles</p>
-                  <h2 className="topic-title">{topic.title}</h2>
-                </div>
+                <h2 className="home-topic-title">{topic.title}</h2>
                 <Link
                   href={topic.href}
                   className="ui-action"
@@ -109,10 +71,7 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
-        <div className="section-title">
-          <p>Ranking</p>
-          <h2>よく読まれている記事</h2>
-        </div>
+        <h2 className="home-topic-title">よく読まれている記事</h2>
         <ol className="mt-7 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
           {ranking.map((article, index) => (
             <li key={article.slug} className="min-w-0">
@@ -136,7 +95,7 @@ export default function HomePage() {
                   <span className="block text-[11px] font-extrabold text-[#b66f79]">
                     {article.menuLabel}
                   </span>
-                  <span className="mt-1 line-clamp-3 block text-sm font-black leading-6 text-[#2b2522] transition group-hover:text-[#b66f79]">
+                  <span className="mt-1 line-clamp-3 block text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#b66f79]">
                     {article.title}
                   </span>
                 </span>

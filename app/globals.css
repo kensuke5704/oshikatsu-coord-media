@@ -211,6 +211,16 @@ a {
   line-height: 1.35;
 }
 
+.home-topic-title {
+  color: #2b2522;
+  font-family: "Oshikatsu Shippori", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: clamp(1.45rem, 3.2vw, 2.7rem);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
 .section-title span {
   display: block;
   margin-top: 1rem;
