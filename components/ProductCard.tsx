@@ -1,13 +1,27 @@
 import type { Product } from "@/lib/types";
 
+const repositoryName = "oshikatsu-coord-media";
+const basePath = process.env.NODE_ENV === "production" ? `/${repositoryName}` : "";
+
 export function ProductCard({ product }: { product: Product }) {
+  const imageSrc = product.imageUrl
+    ? product.imageUrl.startsWith("/")
+      ? `${basePath}${product.imageUrl}`
+      : product.imageUrl
+    : null;
+
   return (
     <article className="flex h-full w-[208px] shrink-0 snap-start flex-col overflow-hidden border border-[#d7ecee] bg-white sm:w-auto sm:shrink">
       <div className="product-visual grid aspect-square place-items-center border-b border-[#e3f1f2] bg-[#f6fbfb] p-3 sm:aspect-[4/3] sm:p-4">
-        <div className="product-visual-inner">
-          <span className="product-visual-type">{product.itemType}</span>
-          <span className="product-visual-name">{product.color}</span>
-        </div>
+        {imageSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={imageSrc} alt="" className="product-visual-image" loading="lazy" />
+        ) : (
+          <div className="product-visual-inner">
+            <span className="product-visual-type">{product.itemType}</span>
+            <span className="product-visual-name">{product.color}</span>
+          </div>
+        )}
       </div>
       <div className="flex flex-1 flex-col p-3 sm:p-4">
         <h3 className="line-clamp-2 min-h-[2.5rem] text-sm font-black leading-snug text-[#1d3337] sm:text-base">
