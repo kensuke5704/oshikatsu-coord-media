@@ -7,7 +7,6 @@
     "articles:sync": "node scripts/generate-article-rows.mjs",
     "images:finalize": "node scripts/finalize-article-assets.mjs",
     "images:articles": "node scripts/create-article-images.mjs",
-    "images:mock": "node scripts/create-mock-images.mjs",
     "images:context": "node scripts/list-article-image-context.mjs",
     "build": "npm run articles:sync && next build",
     "export": "npm run build",
