@@ -1,10 +1,30 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { useEffect, useMemo, useState } from "react";
-import { ArticleVisual } from "@/components/ArticleVisual";
+import { withBasePath } from "@/lib/media";
 import type { ArticleSummary } from "@/lib/types";
+
+const heroImageBySlug: Record<string, { src: string; alt: string }> = {
+  "live-oshikatsu-coordinate": {
+    src: "/images/home/hero-live.jpg",
+    alt: "水色のカーディガンと黒のスカートを合わせた、ライブに向けたコーディネート",
+  },
+  "collaboration-cafe-oshikatsu-coordinate": {
+    src: "/images/home/hero-collaboration-cafe.jpg",
+    alt: "ラベンダーのプリーツスカートとシルバーバッグを合わせたカフェコーディネート",
+  },
+  "silver-bag-oshikatsu-coordinate": {
+    src: "/images/home/hero-silver-bag.jpg",
+    alt: "淡いブルーニットとシルバーショルダーバッグのディテール",
+  },
+  "futuristic-cyber-oshikatsu-coordinate": {
+    src: "/images/home/hero-futuristic-style.jpg",
+    alt: "水色と黒を使った近未来ムードのバウンドコーディネート",
+  },
+};
 
 export function HomeCarousel({
   articles,
@@ -17,10 +37,6 @@ export function HomeCarousel({
   const visibleArticles = articles.slice(0, 4);
   const activeArticle = visibleArticles[activeIndex];
   const total = visibleArticles.length;
-  const orderedArticles =
-    total > 0
-      ? [...visibleArticles.slice(activeIndex), ...visibleArticles.slice(0, activeIndex)]
-      : [];
 
   const controls = useMemo(
     () => ({
@@ -52,14 +68,25 @@ export function HomeCarousel({
     >
       <div className="home-hero-frame relative overflow-hidden bg-white">
         <div className="home-hero-filmstrip" aria-live="polite">
-          {orderedArticles.map((article, index) => (
+          {visibleArticles.map((article, index) => (
             <Link
               key={article.slug}
               href={`/articles/${article.slug}`}
-              className={`home-hero-slide group ${index === 0 ? "is-active" : ""}`}
+              className={`home-hero-slide group ${index === activeIndex ? "is-active" : ""}`}
               aria-label={article.title}
+              aria-hidden={index !== activeIndex}
             >
-              <ArticleVisual article={article} variant="hero" />
+              {heroImageBySlug[article.slug] ? (
+                <Image
+                  src={withBasePath(heroImageBySlug[article.slug].src) ?? heroImageBySlug[article.slug].src}
+                  alt={heroImageBySlug[article.slug].alt}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw, min(1280px, 100vw)"
+                  className="home-hero-image"
+                  unoptimized
+                />
+              ) : null}
             </Link>
           ))}
         </div>

@@ -12,6 +12,19 @@ const sizesByVariant: Record<ArticleVisualVariant, string> = {
   ranking: "92px",
 };
 
+const heroFocusByArticleNo: Record<number, string> = {
+  1: "18% 28%",
+  2: "72% 32%",
+  3: "26% 72%",
+  4: "71% 24%",
+  5: "26% 28%",
+  6: "72% 68%",
+  7: "28% 66%",
+  8: "74% 30%",
+  9: "26% 70%",
+  10: "72% 28%",
+};
+
 export function ArticleVisual({
   article,
   variant = "square",
@@ -32,6 +45,7 @@ export function ArticleVisual({
         fill
         sizes={sizesByVariant[variant]}
         className="article-visual-image"
+        style={variant === "hero" ? { objectPosition: heroFocusByArticleNo[article.no] ?? "center" } : undefined}
         unoptimized
       />
       {rank ? <span className="article-visual-rank">{rank}</span> : null}

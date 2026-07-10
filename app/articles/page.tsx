@@ -1,6 +1,7 @@
 import { ArticleCard } from "@/components/ArticleCard";
 import { SiteShell } from "@/components/SiteShell";
 import { articles } from "@/lib/articles";
+import Link from "next/link";
 
 export const metadata = {
   title: "記事一覧 | oshikatsu coord",
@@ -26,12 +27,13 @@ export default function ArticlesPage() {
         </div>
         <div className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 sm:pb-0">
           {tagShortcuts.map((tag) => (
-            <span
+            <Link
               key={tag}
+              href={`/search?q=${encodeURIComponent(tag)}`}
               className="ui-chip ui-chip-accent"
             >
               #{tag}
-            </span>
+            </Link>
           ))}
         </div>
         <div className="mt-10">

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { ArticleCard } from "@/components/ArticleCard";
 import { SiteShell } from "@/components/SiteShell";
 import { getArticlesByCategory } from "@/lib/articles";
@@ -54,12 +55,13 @@ export default async function CategoryPage({
         {categoryTags.length > 0 ? (
           <div className="-mx-4 mt-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 sm:pb-0">
             {categoryTags.map((tag) => (
-              <span
+              <Link
                 key={tag}
+                href={`/search?q=${encodeURIComponent(tag)}`}
                 className="ui-chip ui-chip-accent"
               >
                 #{tag}
-              </span>
+              </Link>
             ))}
           </div>
         ) : null}

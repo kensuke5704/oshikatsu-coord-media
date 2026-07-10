@@ -11,7 +11,7 @@ export function DisclosureNotice() {
           <p>
             PR: この記事には広告・アフィリエイトリンクを含みます。掲載しているコーデ提案は非公式のファッション提案です。
           </p>
-          <p>
+          <p className="disclosure-notice-detail">
             各作品・キャラクター・権利者とは関係なく、公式画像・ロゴ・衣装デザインの再現ではなく、色や雰囲気を日常服に置き換えています。
           </p>
         </div>

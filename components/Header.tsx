@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { MagnifyingGlass } from "@phosphor-icons/react";
+import { MagnifyingGlass, X } from "@phosphor-icons/react";
 
 const navItems = [
   { href: "/", label: "HOME" },
@@ -58,7 +58,7 @@ export function Header() {
           </Link>
         </div>
         <div className="min-w-0 justify-self-stretch text-center lg:w-auto lg:justify-self-center">
-          <div className="scrollbar-none max-w-full overflow-x-auto overscroll-x-contain whitespace-nowrap px-1 lg:overflow-visible lg:px-0">
+          <div className="scrollbar-none flex max-w-full justify-center overflow-x-auto overscroll-x-contain whitespace-nowrap px-1 lg:overflow-visible lg:px-0">
             <Link href="/" className="inline-flex min-w-max flex-col items-center px-3 sm:px-0">
               <span className="brand-logo block whitespace-nowrap text-[22px] leading-none text-[#2b2522] sm:text-[26px]">
                 oshikatsu coord
@@ -106,8 +106,8 @@ export function Header() {
               検索
             </button>
           </form>
-          <div className="mt-3 flex items-center gap-3">
-            <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1">
+          <div className="header-search-suggestions mt-3">
+            <div className="flex min-w-0 gap-2 overflow-x-auto pb-1">
               {searchSuggestions.map((suggestion) => (
                 <button
                   key={suggestion}
@@ -121,13 +121,14 @@ export function Header() {
             </div>
             <button
               type="button"
-              className="shrink-0 text-xs font-black tracking-[0.12em] text-[#8b7b74] transition hover:text-[#ff4f8b]"
+              className="header-search-close"
+              aria-label="検索を閉じる"
               onClick={() => {
                 setKeyword("");
                 setIsSearchOpen(false);
               }}
             >
-              閉じる
+              <X size={18} weight="bold" />
             </button>
           </div>
         </div>

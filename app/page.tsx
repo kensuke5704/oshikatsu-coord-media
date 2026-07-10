@@ -15,17 +15,20 @@ type TopicSection = {
 
 export default function HomePage() {
   const featuredArticles = [
-    articles[0],
     articles[3],
     articles[4],
+    articles[8],
     articles[9],
   ].filter((article): article is ArticleSummary => Boolean(article));
+  const featuredSlugs = new Set(featuredArticles.map((article) => article.slug));
 
   const topicSections: TopicSection[] = categories
     .map((category) => ({
       title: category.name,
       href: `/categories/${category.slug}`,
-      articles: getArticlesByCategory(category.slug).slice(0, 3),
+      articles: getArticlesByCategory(category.slug)
+        .filter((article) => !featuredSlugs.has(article.slug))
+        .slice(0, 3),
     }))
     .filter((topic) => topic.articles.length > 0);
 
