@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArticleVisual } from "@/components/ArticleVisual";
 import { HomeCarousel } from "@/components/HomeCarousel";
 import { SiteShell } from "@/components/SiteShell";
-import { TopicArticleCard, TopicArticlePlaceholder } from "@/components/TopicArticleCard";
+import { TopicArticleCard } from "@/components/TopicArticleCard";
 import { articles, getArticlesByCategory } from "@/lib/articles";
 import { categories } from "@/lib/categories";
 import type { ArticleSummary } from "@/lib/types";
@@ -13,10 +13,6 @@ type TopicSection = {
   articles: ArticleSummary[];
 };
 
-function createArticleSlots(sectionArticles: ArticleSummary[]) {
-  return Array.from({ length: 3 }, (_, index) => sectionArticles[index] ?? null);
-}
-
 export default function HomePage() {
   const featuredArticles = [
     articles[0],
@@ -25,11 +21,13 @@ export default function HomePage() {
     articles[9],
   ].filter((article): article is ArticleSummary => Boolean(article));
 
-  const topicSections: TopicSection[] = categories.map((category) => ({
-    title: category.name,
-    href: `/categories/${category.slug}`,
-    articles: getArticlesByCategory(category.slug).slice(0, 3),
-  }));
+  const topicSections: TopicSection[] = categories
+    .map((category) => ({
+      title: category.name,
+      href: `/categories/${category.slug}`,
+      articles: getArticlesByCategory(category.slug).slice(0, 3),
+    }))
+    .filter((topic) => topic.articles.length > 0);
 
   const ranking = [articles[0], articles[3], articles[4], articles[8], articles[9]].filter(
     (article): article is ArticleSummary => Boolean(article),
@@ -55,13 +53,16 @@ export default function HomePage() {
                   ALL
                 </Link>
               </div>
-              <div className="topic-scroll -mx-4 flex snap-x scroll-pl-6 gap-4 overflow-x-auto px-6 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
-                {createArticleSlots(topic.articles).map((article, index) => (
-                  article ? (
-                    <TopicArticleCard key={article.slug} article={article} />
-                  ) : (
-                    <TopicArticlePlaceholder key={`${topic.title}-${index}`} />
-                  )
+              <div
+                className="topic-scroll home-topic-list -mx-4 flex snap-x scroll-pl-6 gap-4 overflow-x-auto px-6 pb-2 sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0"
+                data-count={topic.articles.length}
+              >
+                {topic.articles.map((article) => (
+                  <TopicArticleCard
+                    key={article.slug}
+                    article={article}
+                    featured={topic.articles.length === 1}
+                  />
                 ))}
               </div>
             </section>

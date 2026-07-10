@@ -112,7 +112,7 @@ const rows = records.map((record, index) => {
     affiliatePriority: splitList(requireValue(values, "affiliatePriority", rowNumber)),
     sourceStatus: requireValue(values, "status", rowNumber),
     imagePath:
-      values.imagePath?.trim() || `/images/articles/${requireValue(values, "slug", rowNumber)}${imageRevision}.png`,
+      values.imagePath?.trim() || `/images/articles/${requireValue(values, "slug", rowNumber)}${imageRevision}.jpg`,
     imageAlt:
       values.imageAlt?.trim() ||
       `${requireValue(values, "title", rowNumber)}のコーディネート参考画像`,

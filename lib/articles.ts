@@ -48,7 +48,7 @@ export const articles: ArticleSummary[] = rows.map((row): ArticleSummary => {
     categorySlug: category.slug,
     status: "完成",
     excerpt: excerptsByNo[row.no] ?? createFallbackExcerpt(row),
-    thumbnailImage: row.imagePath ?? `/images/articles/${row.slug}.png`,
+    thumbnailImage: row.imagePath ?? `/images/articles/${row.slug}.jpg`,
     thumbnailAlt: row.imageAlt ?? `${row.title}のコーディネート参考画像`,
   };
 });

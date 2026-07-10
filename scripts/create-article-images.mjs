@@ -20,7 +20,7 @@ const missing = [];
 const invalid = [];
 
 for (const row of articleRows) {
-  const relativeImagePath = (row.imagePath ?? `/images/articles/${row.slug}.png`).replace(/^\//, "");
+  const relativeImagePath = (row.imagePath ?? `/images/articles/${row.slug}.jpg`).replace(/^\//, "");
   const imagePath = path.join(process.cwd(), "public", relativeImagePath);
 
   if (!fs.existsSync(imagePath)) {

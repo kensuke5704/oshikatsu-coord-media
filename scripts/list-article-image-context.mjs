@@ -24,7 +24,7 @@ console.log(`imageSize\t${imageConfig.width}x${imageConfig.height}`);
 console.log("");
 console.log("targets:");
 for (const row of articleRows) {
-  const relativeImagePath = (row.imagePath ?? `/images/articles/${row.slug}.png`).replace(/^\//, "");
+  const relativeImagePath = (row.imagePath ?? `/images/articles/${row.slug}.jpg`).replace(/^\//, "");
   const imagePath = path.join("public", relativeImagePath);
   const palette =
     noPaletteArticleTypes.has(row.articleType) ||

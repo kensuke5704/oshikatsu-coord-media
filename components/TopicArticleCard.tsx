@@ -2,9 +2,19 @@ import Link from "next/link";
 import { ArticleVisual } from "@/components/ArticleVisual";
 import type { ArticleSummary } from "@/lib/types";
 
-export function TopicArticleCard({ article }: { article: ArticleSummary }) {
+export function TopicArticleCard({
+  article,
+  featured = false,
+}: {
+  article: ArticleSummary;
+  featured?: boolean;
+}) {
   return (
-    <article className="group topic-card w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
+    <article
+      className={`group topic-card w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0 ${
+        featured ? "topic-card-featured" : ""
+      }`}
+    >
       <Link
         href={`/articles/${article.slug}`}
         className="topic-card-image relative block aspect-square overflow-hidden bg-[#fff0f6]"
@@ -19,19 +29,6 @@ export function TopicArticleCard({ article }: { article: ArticleSummary }) {
       {article.tags[0] ? (
         <p className="mt-2 text-[11px] font-black tracking-[0.08em] text-[#2f929b]">#{article.tags[0]}</p>
       ) : null}
-    </article>
-  );
-}
-
-export function TopicArticlePlaceholder() {
-  return (
-    <article className="topic-card w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
-      <div className="topic-placeholder grid aspect-square place-items-center">
-        <span className="text-xs font-black tracking-[0.18em] text-[#8b7b74]">NEXT STORY</span>
-      </div>
-      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#8b7b74]">
-        Coming soon
-      </h3>
     </article>
   );
 }

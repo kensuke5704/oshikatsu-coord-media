@@ -156,7 +156,7 @@ async function finalizeArticleImages() {
     }
 
     const sourcePath = path.join(generatedDir, sourceName);
-    const outputPath = path.join(outputArticleDir, `${row.slug}-${imageConfig.imageRevision}.png`);
+    const outputPath = path.join(outputArticleDir, `${row.slug}-${imageConfig.imageRevision}.jpg`);
     if (!fs.existsSync(sourcePath)) {
       if (fs.existsSync(outputPath)) {
         continue;
@@ -174,7 +174,7 @@ async function finalizeArticleImages() {
       .resize(outputWidth, outputHeight, { fit: "cover", position: "center" })
       .modulate({ saturation: 0.96, brightness: 0.995 })
       .composite(layers)
-      .png({ compressionLevel: 9 })
+      .jpeg({ quality: 78, mozjpeg: true })
       .toFile(outputPath);
   }
 }
@@ -182,11 +182,11 @@ async function finalizeArticleImages() {
 async function finalizeProductImages() {
   fs.mkdirSync(outputProductDir, { recursive: true });
   const expectedProductImages = [
-    "mint-rib-knit-v1.png",
-    "black-pleats-skirt-v1.png",
-    "silver-mini-bag-v1.png",
-    "black-platform-sneaker-v1.png",
-    "clear-silver-accessory-v1.png",
+    "mint-rib-knit-v1.jpg",
+    "black-pleats-skirt-v1.jpg",
+    "silver-mini-bag-v1.jpg",
+    "black-platform-sneaker-v1.jpg",
+    "clear-silver-accessory-v1.jpg",
   ];
   const sheetPath = path.join(
     generatedDir,
@@ -207,10 +207,10 @@ async function finalizeProductImages() {
   const halfW = Math.floor((metadata.width ?? 1024) / 2);
   const halfH = Math.floor((metadata.height ?? 1024) / 2);
   const crops = [
-    ["mint-rib-knit-v1.png", 0, 0],
-    ["black-pleats-skirt-v1.png", halfW, 0],
-    ["silver-mini-bag-v1.png", 0, halfH],
-    ["black-platform-sneaker-v1.png", halfW, halfH],
+    ["mint-rib-knit-v1.jpg", 0, 0],
+    ["black-pleats-skirt-v1.jpg", halfW, 0],
+    ["silver-mini-bag-v1.jpg", 0, halfH],
+    ["black-platform-sneaker-v1.jpg", halfW, halfH],
   ];
 
   await Promise.all(
@@ -218,15 +218,15 @@ async function finalizeProductImages() {
       sharp(sheetPath)
         .extract({ left, top, width: halfW, height: halfH })
         .resize(900, 900, { fit: "cover", position: "center" })
-        .png({ compressionLevel: 9 })
+        .jpeg({ quality: 78, mozjpeg: true })
         .toFile(path.join(outputProductDir, name)),
     ),
   );
 
   await sharp(accessorySvg())
     .resize(900, 900)
-    .png({ compressionLevel: 9 })
-    .toFile(path.join(outputProductDir, "clear-silver-accessory-v1.png"));
+    .jpeg({ quality: 78, mozjpeg: true })
+    .toFile(path.join(outputProductDir, "clear-silver-accessory-v1.jpg"));
 }
 
 function updateHistory() {
@@ -238,7 +238,7 @@ function updateHistory() {
     articleType: row.articleType,
     menuLabel: row.menuLabel,
     sourceImage: sourceBySlug[row.slug],
-    outputImage: `/images/articles/${row.slug}-${imageConfig.imageRevision}.png`,
+    outputImage: `/images/articles/${row.slug}-${imageConfig.imageRevision}.jpg`,
     paletteCards: shouldShowPalette(row),
     layout: "1024x1536; 2x2 grid split exactly at x=512/y=768; top-left and bottom-right full-body; top-right and bottom-left detail.",
     panelRule: shouldShowPalette(row)

@@ -17,6 +17,10 @@ export function HomeCarousel({
   const visibleArticles = articles.slice(0, 4);
   const activeArticle = visibleArticles[activeIndex];
   const total = visibleArticles.length;
+  const orderedArticles =
+    total > 0
+      ? [...visibleArticles.slice(activeIndex), ...visibleArticles.slice(0, activeIndex)]
+      : [];
 
   const controls = useMemo(
     () => ({
@@ -47,13 +51,18 @@ export function HomeCarousel({
       onMouseLeave={() => setIsPaused(false)}
     >
       <div className="home-hero-frame relative overflow-hidden bg-white">
-        <Link
-          href={`/articles/${activeArticle.slug}`}
-          className="home-hero-single group block"
-          aria-label={activeArticle.title}
-        >
-          <ArticleVisual article={activeArticle} variant="hero" />
-        </Link>
+        <div className="home-hero-filmstrip" aria-live="polite">
+          {orderedArticles.map((article, index) => (
+            <Link
+              key={article.slug}
+              href={`/articles/${article.slug}`}
+              className={`home-hero-slide group ${index === 0 ? "is-active" : ""}`}
+              aria-label={article.title}
+            >
+              <ArticleVisual article={article} variant="hero" />
+            </Link>
+          ))}
+        </div>
         <div className="pointer-events-none absolute inset-x-3 top-1/2 z-10 flex -translate-y-1/2 items-center justify-between gap-3 sm:inset-x-5">
           <div className="pointer-events-auto flex gap-2">
             <button

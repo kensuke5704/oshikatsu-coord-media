@@ -1,21 +1,20 @@
+import Image from "next/image";
+import { withBasePath } from "@/lib/media";
 import type { Product } from "@/lib/types";
 
-const repositoryName = "oshikatsu-coord-media";
-const basePath = process.env.NODE_ENV === "production" ? `/${repositoryName}` : "";
-
 export function ProductCard({ product }: { product: Product }) {
-  const imageSrc = product.imageUrl
-    ? product.imageUrl.startsWith("/")
-      ? `${basePath}${product.imageUrl}`
-      : product.imageUrl
-    : null;
-
   return (
     <article className="product-card flex h-full w-[218px] shrink-0 snap-start flex-col overflow-hidden bg-white sm:w-auto sm:shrink">
       <div className="product-visual grid aspect-square place-items-center bg-[#f8f6f4] p-4 sm:aspect-[4/3]">
-        {imageSrc ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={imageSrc} alt="" className="product-visual-image" loading="lazy" />
+        {product.imageUrl ? (
+          <Image
+            src={withBasePath(product.imageUrl) ?? product.imageUrl}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 218px, 220px"
+            className="product-visual-image"
+            unoptimized
+          />
         ) : (
           <div className="product-visual-inner">
             <span className="product-visual-type">{product.itemType}</span>
@@ -38,7 +37,7 @@ export function ProductCard({ product }: { product: Product }) {
           rel="sponsored noopener noreferrer"
           className="product-card-link mt-3 inline-flex min-h-10 items-center justify-center whitespace-nowrap border px-3 text-xs font-black transition active:translate-y-px sm:mt-4 sm:min-h-11 sm:px-4"
         >
-          商品ページを見る
+          似たアイテムを探す
         </a>
       </div>
     </article>

@@ -1,10 +1,8 @@
 import Image from "next/image";
+import { withBasePath } from "@/lib/media";
 import type { ArticleSummary } from "@/lib/types";
 
 type ArticleVisualVariant = "hero" | "square" | "wide" | "portrait" | "ranking";
-
-const repositoryName = "oshikatsu-coord-media";
-const basePath = process.env.NODE_ENV === "production" ? `/${repositoryName}` : "";
 
 const sizesByVariant: Record<ArticleVisualVariant, string> = {
   hero: "(max-width: 768px) 100vw, 960px",
@@ -29,7 +27,7 @@ export function ArticleVisual({
       aria-hidden="true"
     >
       <Image
-        src={`${basePath}${article.thumbnailImage}`}
+        src={withBasePath(article.thumbnailImage) ?? article.thumbnailImage}
         alt=""
         fill
         sizes={sizesByVariant[variant]}
