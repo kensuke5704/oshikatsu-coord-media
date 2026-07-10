@@ -75,6 +75,7 @@ export function HomeCarousel({
               className={`home-hero-slide group ${index === activeIndex ? "is-active" : ""}`}
               aria-label={article.title}
               aria-hidden={index !== activeIndex}
+              tabIndex={index === activeIndex ? undefined : -1}
             >
               {heroImageBySlug[article.slug] ? (
                 <Image
