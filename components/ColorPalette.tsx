@@ -43,7 +43,7 @@ export function ColorPalette({ colors }: { colors: PaletteColor[] }) {
   const slots = getPaletteSlots(colors);
 
   return (
-    <div className="soft-card p-5">
+    <div className="soft-card color-palette-card p-5">
       <p className="text-xs font-black uppercase tracking-[0.14em] text-[#1d3337]">
         Color Palette
       </p>

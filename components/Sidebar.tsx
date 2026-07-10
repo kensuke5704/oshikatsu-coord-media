@@ -20,7 +20,7 @@ export function ArticleSidebar({
         <ul className="mt-4 space-y-4">
           {summary.map((item) => (
             <li key={item} className="flex gap-3 text-sm font-bold leading-7 text-[#4a403b]">
-              <span className="mt-1 grid size-5 shrink-0 place-items-center rounded-[4px] bg-[#fff3f1] text-[#b66f79]">
+              <span className="mt-1 grid size-5 shrink-0 place-items-center rounded-[4px] bg-[#f4fbfb] text-[#2f929b]">
                 <Check size={14} weight="bold" />
               </span>
               {item}
@@ -37,7 +37,7 @@ export function ArticleSidebar({
               href={`/articles/${article.slug}`}
               className="grid grid-cols-[2rem_1fr] gap-3 rounded-[4px] p-2 transition hover:bg-[#fff7f5]"
             >
-              <span className="grid size-8 place-items-center rounded-[4px] bg-[#b66f79] text-sm font-black text-white">
+              <span className="grid size-8 place-items-center rounded-[4px] bg-[#2b2522] text-sm font-black text-white">
                 {index + 1}
               </span>
               <span className="text-sm font-black leading-6 text-[#2b2522]">

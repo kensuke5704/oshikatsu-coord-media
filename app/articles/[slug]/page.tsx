@@ -103,6 +103,12 @@ export default async function ArticlePage({
               <DisclosureNotice />
             </div>
 
+            <figure className="article-lead-visual mt-7 overflow-hidden border border-[#eadfda] bg-white">
+              <div className="aspect-[4/5] w-full overflow-hidden sm:aspect-[16/9]">
+                <ArticleVisual article={detail} variant="hero" />
+              </div>
+            </figure>
+
             <section className="mt-6 rounded-[4px] border border-[#eadfda] bg-white p-5 lg:hidden">
               <h2 className="text-base font-black text-[#2b2522]">この記事でわかること</h2>
               <ul className="mt-3 space-y-2">

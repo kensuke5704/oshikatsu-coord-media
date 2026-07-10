@@ -14,8 +14,9 @@ export function HomeCarousel({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  const activeArticle = articles[activeIndex];
-  const total = articles.length;
+  const visibleArticles = articles.slice(0, 4);
+  const activeArticle = visibleArticles[activeIndex];
+  const total = visibleArticles.length;
 
   const controls = useMemo(
     () => ({
@@ -48,15 +49,10 @@ export function HomeCarousel({
       <div className="home-hero-frame relative overflow-hidden bg-white">
         <Link
           href={`/articles/${activeArticle.slug}`}
-          className="group relative z-0 block aspect-[4/5] min-h-[330px] overflow-hidden bg-[#fff8fb] sm:aspect-[16/7]"
+          className="home-hero-single group block"
           aria-label={activeArticle.title}
         >
-          <div className="home-hero-backdrop" aria-hidden="true">
-            <ArticleVisual key={`${activeArticle.slug}-backdrop`} article={activeArticle} variant="heroBackdrop" />
-          </div>
-          <div className="home-hero-poster">
-            <ArticleVisual key={activeArticle.slug} article={activeArticle} variant="hero" />
-          </div>
+          <ArticleVisual article={activeArticle} variant="hero" />
         </Link>
         <div className="pointer-events-none absolute inset-x-3 top-1/2 z-10 flex -translate-y-1/2 items-center justify-between gap-3 sm:inset-x-5">
           <div className="pointer-events-auto flex gap-2">
@@ -79,13 +75,13 @@ export function HomeCarousel({
           </div>
         </div>
         <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2 bg-white/82 px-3 py-2 backdrop-blur">
-          {articles.map((article, index) => (
+          {visibleArticles.map((article, index) => (
             <button
               key={article.slug}
               type="button"
               onClick={() => setActiveIndex(index)}
-              className={`h-1.5 w-7 transition ${
-                index === activeIndex ? "bg-[#ff4f8b]" : "bg-[#d7ecee] hover:bg-[#ffbfd2]"
+              className={`h-1 w-8 transition ${
+                index === activeIndex ? "bg-[#2b2522]" : "bg-[#d7d0cc] hover:bg-[#746863]"
               }`}
               aria-label={`${index + 1}番目の特集記事を表示`}
               aria-current={index === activeIndex}

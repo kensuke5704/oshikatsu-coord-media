@@ -27,10 +27,10 @@ export function TopicArticlePlaceholder() {
   return (
     <article className="topic-card w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
       <div className="topic-placeholder grid aspect-square place-items-center">
-        <span className="text-xs font-black tracking-[0.18em] text-[#a89b95]">COMING SOON</span>
+        <span className="text-xs font-black tracking-[0.18em] text-[#8b7b74]">NEXT STORY</span>
       </div>
-      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#b38b98]">
-        記事準備中
+      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#8b7b74]">
+        Coming soon
       </h3>
     </article>
   );
