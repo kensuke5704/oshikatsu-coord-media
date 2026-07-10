@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ArticleVisual } from "@/components/ArticleVisual";
 import { HomeCarousel } from "@/components/HomeCarousel";
 import { SiteShell } from "@/components/SiteShell";
 import { TopicArticleCard, TopicArticlePlaceholder } from "@/components/TopicArticleCard";
@@ -18,10 +18,6 @@ function createArticleSlots(sectionArticles: ArticleSummary[]) {
 }
 
 export default function HomePage() {
-  const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
-  const assetBasePath =
-    process.env.NEXT_PUBLIC_BASE_PATH ??
-    (process.env.GITHUB_ACTIONS === "true" && repositoryName !== "" ? `/${repositoryName}` : "");
   const featuredArticles = [
     articles[0],
     articles[3],
@@ -41,10 +37,10 @@ export default function HomePage() {
 
   return (
     <SiteShell>
-      <HomeCarousel articles={featuredArticles} assetBasePath={assetBasePath} />
+      <HomeCarousel articles={featuredArticles} />
 
-      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-        <div className="space-y-14">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+        <div className="space-y-16">
           {topicSections.map((topic) => (
             <section key={topic.title} className="home-topic-section pt-8">
               <div className="mb-6 flex items-end justify-between gap-5">
@@ -77,20 +73,11 @@ export default function HomePage() {
             <li key={article.slug} className="min-w-0">
               <Link
                 href={`/articles/${article.slug}`}
-                className="group grid h-full grid-cols-[84px_minmax(0,1fr)] gap-3 rounded-[6px] border border-[#ffd5df] bg-white p-3 shadow-[0_8px_22px_rgba(255,79,139,0.07)] transition hover:-translate-y-0.5 hover:border-[#ff4f8b]/45 md:grid-cols-[92px_minmax(0,1fr)] xl:block"
+                className="group grid h-full grid-cols-[84px_minmax(0,1fr)] gap-3 border border-[#f0d7df] bg-white p-3 shadow-[0_8px_22px_rgba(120,68,83,0.055)] transition hover:-translate-y-0.5 hover:border-[#ff4f8b]/45 md:grid-cols-[92px_minmax(0,1fr)] xl:block"
               >
-                <span className="relative block aspect-square overflow-hidden rounded-[6px] bg-[#fff0f6] xl:mb-3">
-                  <Image
-                    src={`${assetBasePath}${article.thumbnailImage}`}
-                    alt={article.thumbnailAlt}
-                    fill
-                    sizes="(min-width: 1280px) 18vw, 92px"
-                    className="object-cover transition duration-500 group-hover:scale-[1.04]"
-                  />
-                  <span className="absolute left-2 top-2 grid size-7 place-items-center rounded-[4px] bg-[#ff4f8b] text-sm font-black text-white">
-                    {index + 1}
-                  </span>
-                </span>
+                <div className="relative block aspect-square overflow-hidden bg-[#fff0f6] xl:mb-3">
+                  <ArticleVisual article={article} variant="ranking" rank={index + 1} />
+                </div>
                 <span className="min-w-0">
                   <span className="block text-[11px] font-extrabold text-[#ff4f8b]">
                     {article.menuLabel}

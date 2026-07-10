@@ -20,12 +20,6 @@ export const categories = [
     description: "近未来、清楚、モードなどテイストから探せる着こなし。",
   },
   {
-    name: "SCENE",
-    slug: "scene",
-    count: 0,
-    description: "ライブ、コラボカフェ、推し会など場面別の服装ガイド。",
-  },
-  {
     name: "GUIDE",
     slug: "guide",
     count: 0,

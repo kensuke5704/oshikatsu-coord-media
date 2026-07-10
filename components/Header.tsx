@@ -10,7 +10,6 @@ const navItems = [
   { href: "/categories/look", label: "LOOK" },
   { href: "/categories/color", label: "COLOR" },
   { href: "/categories/style", label: "STYLE" },
-  { href: "/categories/scene", label: "SCENE" },
   { href: "/categories/guide", label: "GUIDE" },
   { href: "/categories/feature", label: "FEATURE" },
 ];

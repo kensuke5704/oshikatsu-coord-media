@@ -1,11 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
+import { ArticleVisual } from "@/components/ArticleVisual";
 import type { ArticleSummary } from "@/lib/types";
-
-const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
-const basePath =
-  process.env.NEXT_PUBLIC_BASE_PATH ??
-  (process.env.GITHUB_ACTIONS === "true" && repositoryName !== "" ? `/${repositoryName}` : "");
 
 export function ArticleCard({
   article,
@@ -16,7 +11,7 @@ export function ArticleCard({
 }) {
   return (
     <article
-      className={`group media-card fade-up flex h-full flex-col overflow-hidden rounded-[4px] bg-white ${
+      className={`group media-card fade-up flex h-full flex-col overflow-hidden bg-white ${
         priority ? "md:grid md:grid-cols-[1.05fr_0.95fr]" : ""
       }`}
     >
@@ -27,18 +22,7 @@ export function ArticleCard({
         }`}
         aria-label={article.title}
       >
-        <Image
-          src={`${basePath}${article.thumbnailImage}`}
-          alt={article.thumbnailAlt}
-          fill
-          sizes={priority ? "(min-width: 768px) 50vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
-          className="object-cover transition duration-500 group-hover:scale-[1.03]"
-          priority={priority}
-        />
-        <span className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-transparent" />
-        <span className="absolute left-4 top-4 rounded-[4px] bg-[#ff4f8b] px-3 py-1 text-[11px] font-black text-white">
-          {article.menuLabel}
-        </span>
+        <ArticleVisual article={article} variant={priority ? "wide" : "square"} />
       </Link>
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div className="flex items-center justify-between gap-3">
@@ -67,10 +51,7 @@ export function ArticleCard({
           {[article.mainColor, article.subColor, article.accentColor]
             .filter((color, index, array) => color && array.indexOf(color) === index)
             .map((color) => (
-              <span
-                key={color}
-                className="rounded-[4px] border border-[#ffd5df] bg-[#fff7fb] px-3 py-1 text-xs font-bold text-[#8b5667]"
-              >
+              <span key={color} className="border border-[#ffd5df] bg-[#fff7fb] px-3 py-1 text-xs font-bold text-[#8b5667]">
                 {color}
               </span>
             ))}

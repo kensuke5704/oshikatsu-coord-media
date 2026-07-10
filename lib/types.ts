@@ -2,7 +2,6 @@ export type CategorySlug =
   | "look"
   | "color"
   | "style"
-  | "scene"
   | "guide"
   | "feature";
 
@@ -10,7 +9,6 @@ export type CategoryName =
   | "LOOK"
   | "COLOR"
   | "STYLE"
-  | "SCENE"
   | "GUIDE"
   | "FEATURE";
 

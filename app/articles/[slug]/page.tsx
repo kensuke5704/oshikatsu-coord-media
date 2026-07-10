@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Tag } from "@phosphor-icons/react/dist/ssr";
 import { ArticleCard } from "@/components/ArticleCard";
+import { ArticleVisual } from "@/components/ArticleVisual";
 import { ArticleSidebar } from "@/components/Sidebar";
 import { ColorPalette } from "@/components/ColorPalette";
 import { DisclosureNotice } from "@/components/Notice";
@@ -16,11 +17,6 @@ import {
   getRelatedArticles,
 } from "@/lib/articles";
 import { getProductsByIds } from "@/lib/products";
-
-const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
-const basePath =
-  process.env.NEXT_PUBLIC_BASE_PATH ??
-  (process.env.GITHUB_ACTIONS === "true" && repositoryName !== "" ? `/${repositoryName}` : "");
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -146,7 +142,7 @@ export default async function ArticlePage({
 
                 <section className="mt-10">
                   <SectionHeading number="02" title="コーディネートイメージ" />
-                  <OutfitIllustration image={mainImage} />
+                  <OutfitIllustration image={mainImage} article={detail} />
                 </section>
 
                 {products.length > 0 ? (
@@ -164,12 +160,13 @@ export default async function ArticlePage({
                   <SectionHeading number="04" title="アイテム構成" />
                   <div className="grid gap-6 rounded-[4px] border border-[#d7ecee] bg-white p-4 md:grid-cols-[minmax(0,0.9fr)_minmax(280px,1fr)] md:p-5">
                     <div className="overflow-hidden rounded-[4px] bg-[#f6fbfb]">
-                      <img
-                        src={`${basePath}${mainImage.src}`}
-                        alt={`${detail.title}のアイテム構成イラスト`}
-                        className="block h-full min-h-[320px] w-full max-w-full object-cover"
-                        loading="lazy"
-                      />
+                      <div
+                        className="h-full min-h-[320px] w-full max-w-full"
+                        role="img"
+                        aria-label={`${detail.title}のアイテム構成イラスト`}
+                      >
+                        <ArticleVisual article={detail} variant="portrait" />
+                      </div>
                     </div>
                     <div className="grid content-center gap-3">
                       {detail.itemSections.map((section, index) => (

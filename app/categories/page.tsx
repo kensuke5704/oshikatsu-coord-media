@@ -18,7 +18,7 @@ export default function CategoriesPage() {
             カテゴリ一覧
           </h1>
           <span>
-            LOOK、COLOR、STYLE、SCENE、GUIDE、FEATUREの6つの入口から記事を探せます。
+            LOOK、COLOR、STYLE、GUIDE、FEATUREの5つの入口から記事を探せます。
           </span>
         </div>
         <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">

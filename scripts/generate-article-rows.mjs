@@ -5,11 +5,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const defaultCsvPath = path.join(rootDir, "data", "INITIAL_ARTICLES.csv");
-const googleDriveCsvPath =
-  "/Users/kensuke_kawamura/Library/CloudStorage/GoogleDrive-kensuke5704@gmail.com/マイドライブ/(76)media/INITIAL_ARTICLES.csv";
-const csvPath =
-  process.env.ARTICLE_CSV_PATH ||
-  (fs.existsSync(googleDriveCsvPath) ? googleDriveCsvPath : defaultCsvPath);
+const csvPath = process.env.ARTICLE_CSV_PATH || defaultCsvPath;
 const outPath = path.join(rootDir, "lib", "articleRows.generated.ts");
 const imageConfigPath = path.join(rootDir, "data", "article-image-config.json");
 const imageConfig = JSON.parse(fs.readFileSync(imageConfigPath, "utf8"));
@@ -84,9 +80,6 @@ function requireValue(record, key, rowNumber) {
 }
 
 const csvText = fs.readFileSync(csvPath, "utf8").replace(/^\uFEFF/u, "");
-if (path.resolve(csvPath) !== path.resolve(defaultCsvPath)) {
-  fs.copyFileSync(csvPath, defaultCsvPath);
-}
 
 const [headers, ...records] = parseCsv(csvText);
 const headerKeys = headers.map((header) => header.trim());
