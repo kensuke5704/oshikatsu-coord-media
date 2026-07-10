@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { SiteShell } from "@/components/SiteShell";
 import { getCategoriesWithArticleCounts } from "@/lib/articles";
 
@@ -21,20 +22,21 @@ export default function CategoriesPage() {
             LOOK、COLOR、STYLE、GUIDE、FEATUREの5つの入口から記事を探せます。
           </span>
         </div>
-        <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="category-index mt-9">
           {categories.map((category) => (
             <Link
               key={category.slug}
               href={`/categories/${category.slug}`}
-              className="category-tile fade-up rounded-[4px] bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#b66f79]/40"
+              className="category-index-row fade-up"
             >
-              <div className="flex items-start justify-between gap-4">
-                <h2 className="text-xl font-black text-[#2b2522]">{category.name}</h2>
-                <span className="text-3xl font-black text-[#d7c5bf]">{category.count}</span>
-              </div>
-              <p className="mt-4 text-sm font-medium leading-7 text-[#746863]">
-                {category.description}
-              </p>
+              <span className="category-index-mark" aria-hidden="true" />
+              <h2>{category.name}</h2>
+              <p>{category.description}</p>
+              <span className="category-index-count">
+                <strong>{category.count}</strong>
+                <span>articles</span>
+              </span>
+              <ArrowUpRight className="category-index-arrow" size={22} weight="regular" aria-hidden="true" />
             </Link>
           ))}
         </div>

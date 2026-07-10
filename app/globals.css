@@ -109,7 +109,6 @@ body {
 }
 
 header,
-.category-tile,
 .soft-band p {
   font-family: var(--font-ui);
 }
@@ -674,18 +673,80 @@ article .rounded-\[4px\].border.border-\[\#d7ecee\] {
   box-shadow: 0 18px 60px rgba(255, 79, 139, 0.08);
 }
 
-.category-tile {
-  border: 1px solid #eadfda;
-  box-shadow: 0 8px 24px rgba(65, 45, 38, 0.045);
+.category-index {
+  border-top: 1px solid rgba(43, 37, 34, 0.18);
 }
 
-.category-tile::before {
+.category-index-row {
+  display: grid;
+  grid-template-columns: 44px minmax(150px, 0.55fr) minmax(0, 1.45fr) auto 2rem;
+  align-items: center;
+  gap: 1.25rem;
+  border-bottom: 1px solid rgba(43, 37, 34, 0.14);
+  padding: 1.6rem 0;
+  color: #2b2522;
+  font-family: var(--font-ui);
+  transition: color 220ms ease, background-color 220ms ease, padding-inline 220ms ease;
+}
+
+.category-index-row:hover {
+  background: rgba(255, 79, 139, 0.035);
+  color: var(--accent-deep);
+  padding-inline: 0.55rem;
+}
+
+.category-index-mark {
   display: block;
-  width: 42px;
+  width: 2.6rem;
   height: 3px;
-  margin-bottom: 1.25rem;
   background: var(--accent);
-  content: "";
+}
+
+.category-index-row h2 {
+  margin: 0;
+  font-size: clamp(1.18rem, 2vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.category-index-row p {
+  margin: 0;
+  color: #746863;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.8;
+}
+
+.category-index-count {
+  display: grid;
+  min-width: 4.2rem;
+  gap: 0.08rem;
+  justify-items: end;
+  color: #bfa9a1;
+  font-family: var(--font-sans);
+  line-height: 1;
+}
+
+.category-index-count strong {
+  color: #2b2522;
+  font-size: 1.42rem;
+  font-weight: 700;
+}
+
+.category-index-count span {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.category-index-arrow {
+  color: #b66f79;
+  transition: transform 220ms ease;
+}
+
+.category-index-row:hover .category-index-arrow {
+  transform: translate(2px, -2px);
 }
 
 .paper-pattern {
@@ -927,6 +988,27 @@ article .rounded-\[4px\].border.border-\[\#d7ecee\] {
 }
 
 @media (max-width: 639px) {
+  .category-index-row {
+    grid-template-columns: 1fr auto 1.6rem;
+    gap: 0.7rem;
+    padding: 1.2rem 0;
+  }
+
+  .category-index-row:hover {
+    padding-inline: 0.3rem;
+  }
+
+  .category-index-mark {
+    grid-column: 1 / -1;
+    width: 2.4rem;
+  }
+
+  .category-index-row p {
+    grid-column: 1 / -1;
+    font-size: 0.84rem;
+    line-height: 1.75;
+  }
+
   .home-hero-filmstrip {
     min-height: 0;
     max-height: none;
