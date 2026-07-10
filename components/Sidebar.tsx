@@ -13,8 +13,8 @@ export function ArticleSidebar({
   const categories = getCategoriesWithArticleCounts();
 
   return (
-    <aside className="space-y-6 lg:sticky lg:top-24">
-      <section className="media-card rounded-[4px] bg-white p-5">
+    <aside className="article-sidebar space-y-6 lg:sticky lg:top-24">
+      <section className="article-sidebar-panel bg-white p-5">
         <h2 className="text-lg font-black text-[#2b2522]">この記事のまとめ</h2>
         <div className="mt-4 h-px bg-[#eadfda]" />
         <ul className="mt-4 space-y-4">
@@ -28,7 +28,7 @@ export function ArticleSidebar({
           ))}
         </ul>
       </section>
-      <section className="media-card rounded-[4px] bg-white p-5">
+      <section className="article-sidebar-panel bg-white p-5">
         <h2 className="text-lg font-black text-[#2b2522]">おすすめの関連記事</h2>
         <div className="mt-4 space-y-4">
           {related.slice(0, 4).map((article, index) => (
@@ -47,7 +47,7 @@ export function ArticleSidebar({
           ))}
         </div>
       </section>
-      <section className="media-card rounded-[4px] bg-white p-5">
+      <section className="article-sidebar-panel bg-white p-5">
         <h2 className="text-lg font-black text-[#2b2522]">カテゴリー</h2>
         <div className="mt-4 space-y-2">
           {categories.map((category) => (

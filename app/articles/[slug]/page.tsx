@@ -84,6 +84,9 @@ export default async function ArticlePage({
             <h1 className="article-title mt-5 max-w-4xl text-[1.72rem] leading-[1.55] text-[#2b2522] sm:text-[2.05rem] lg:text-[2.28rem]">
               {detail.title}
             </h1>
+            <p className="article-lead-copy mt-4 max-w-3xl text-base font-bold leading-8 text-[#746863] sm:text-[1.02rem]">
+              {detail.excerpt}
+            </p>
             <div className="mt-5 flex flex-wrap items-center gap-3 text-sm font-bold text-[#66777b]">
               <span className="inline-flex items-center gap-2">
                 <Tag size={18} />

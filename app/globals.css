@@ -189,6 +189,10 @@ a {
   object-fit: cover;
 }
 
+.article-lead-copy {
+  text-wrap: pretty;
+}
+
 .article-visual-rank {
   position: absolute;
   left: 12px;
@@ -778,6 +782,27 @@ article .rounded-\[4px\].border.border-\[\#d7ecee\] {
   font-family: var(--font-ui);
   font-weight: 700;
   letter-spacing: 0.01em;
+}
+
+.disclosure-notice {
+  border: 1px solid rgba(43, 37, 34, 0.12);
+  background: rgba(255, 255, 255, 0.76);
+  padding: 1rem;
+}
+
+.article-sidebar {
+  align-self: start;
+}
+
+.article-sidebar-panel {
+  border: 1px solid rgba(234, 223, 218, 0.92);
+  box-shadow: 0 10px 24px rgba(65, 45, 38, 0.04);
+}
+
+@media (min-width: 1024px) {
+  .article-sidebar {
+    padding-top: 8.2rem;
+  }
 }
 
 .section-heading {
