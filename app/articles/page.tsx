@@ -14,8 +14,8 @@ export default function ArticlesPage() {
 
   return (
     <SiteShell>
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="section-title fade-up">
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-18">
+        <div className="section-title archive-hero fade-up">
           <p>Article index</p>
           <h1>
             記事一覧
@@ -34,10 +34,10 @@ export default function ArticlesPage() {
             </span>
           ))}
         </div>
-        <div className="mt-9">
+        <div className="mt-10">
           <ArticleCard article={leadArticle} priority />
         </div>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {restArticles.map((article) => (
             <ArticleCard key={article.slug} article={article} />
           ))}

@@ -4,39 +4,30 @@ import type { ArticleSummary } from "@/lib/types";
 
 export function TopicArticleCard({ article }: { article: ArticleSummary }) {
   return (
-    <article className="group w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
+    <article className="group topic-card w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
       <Link
         href={`/articles/${article.slug}`}
-        className="relative block aspect-square overflow-hidden border border-[#ffd5df] bg-[#fff0f6] shadow-[0_8px_22px_rgba(255,79,139,0.08)]"
+        className="topic-card-image relative block aspect-square overflow-hidden bg-[#fff0f6]"
         aria-label={article.title}
       >
         <ArticleVisual article={article} />
+        <span className="topic-card-label">{article.menuLabel}</span>
       </Link>
-      <div className="mt-3 flex flex-wrap gap-1.5">
-        <span className="bg-[#ff4f8b] px-2.5 py-1 text-[10px] font-black text-white">
-          {article.menuLabel}
-        </span>
-        {article.tags.slice(0, 1).map((tag) => (
-          <span
-            key={tag}
-            className="border border-[#b7eee7] bg-[#f3fffd] px-2.5 py-1 text-[10px] font-black text-[#278f84]"
-          >
-            #{tag}
-          </span>
-        ))}
-      </div>
-      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#e62f6d]">
+      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#e62f6d] sm:mt-4">
         <Link href={`/articles/${article.slug}`}>{article.title}</Link>
       </h3>
+      {article.tags[0] ? (
+        <p className="mt-2 text-[11px] font-black tracking-[0.08em] text-[#2f929b]">#{article.tags[0]}</p>
+      ) : null}
     </article>
   );
 }
 
 export function TopicArticlePlaceholder() {
   return (
-    <article className="w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
-      <div className="grid aspect-square place-items-center border border-dashed border-[#ffd5df] bg-[#fff7fb]">
-        <span className="text-xs font-black tracking-[0.18em] text-[#ff7aa8]">COMING SOON</span>
+    <article className="topic-card w-[72vw] min-w-[72vw] snap-start sm:w-auto sm:min-w-0">
+      <div className="topic-placeholder grid aspect-square place-items-center">
+        <span className="text-xs font-black tracking-[0.18em] text-[#a89b95]">COMING SOON</span>
       </div>
       <h3 className="mt-3 text-[15px] font-black leading-7 text-[#b38b98]">
         記事準備中

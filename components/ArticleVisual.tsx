@@ -1,13 +1,14 @@
 import Image from "next/image";
 import type { ArticleSummary } from "@/lib/types";
 
-type ArticleVisualVariant = "hero" | "square" | "wide" | "portrait" | "ranking";
+type ArticleVisualVariant = "hero" | "heroBackdrop" | "square" | "wide" | "portrait" | "ranking";
 
 const repositoryName = "oshikatsu-coord-media";
 const basePath = process.env.NODE_ENV === "production" ? `/${repositoryName}` : "";
 
 const sizesByVariant: Record<ArticleVisualVariant, string> = {
   hero: "(max-width: 768px) 100vw, 960px",
+  heroBackdrop: "(max-width: 768px) 100vw, 1280px",
   square: "(max-width: 768px) 64vw, 320px",
   wide: "(max-width: 768px) 100vw, 480px",
   portrait: "(max-width: 768px) 100vw, 760px",

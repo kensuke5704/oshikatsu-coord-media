@@ -40,8 +40,8 @@ export default async function CategoryPage({
 
   return (
     <SiteShell>
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="section-title fade-up">
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-18">
+        <div className="section-title archive-hero fade-up">
           <p>Category</p>
           <h1 className="topic-title">
             {category.name}
@@ -62,7 +62,7 @@ export default async function CategoryPage({
             ))}
           </div>
         ) : null}
-        <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {categoryArticles.map((article) => (
             <ArticleCard key={article.slug} article={article} />
           ))}
