@@ -43,7 +43,6 @@ export default function HomePage() {
             <section key={topic.title} className="home-topic-section">
               <div className="home-topic-heading mb-7 flex items-end justify-between gap-5">
                 <div className="min-w-0">
-                  <p className="home-topic-kicker">Stories {topic.articles.length}</p>
                   <h2 className="home-topic-title">{topic.title}</h2>
                 </div>
                 <Link
@@ -74,7 +73,6 @@ export default function HomePage() {
         <div className="home-ranking-panel">
           <div className="mb-7 flex items-end justify-between gap-5">
             <div>
-              <p className="home-topic-kicker">Most viewed</p>
               <h2 className="home-topic-title home-ranking-title">よく読まれている記事</h2>
             </div>
           </div>

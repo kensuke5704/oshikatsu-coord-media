@@ -12,7 +12,7 @@ export function ArticleCard({
   return (
     <article
       className={`group media-card fade-up flex h-full flex-col overflow-hidden bg-white ${
-        priority ? "md:grid md:grid-cols-[1.05fr_0.95fr]" : ""
+        priority ? "article-card-priority md:grid md:grid-cols-[1.05fr_0.95fr]" : ""
       }`}
     >
       <Link

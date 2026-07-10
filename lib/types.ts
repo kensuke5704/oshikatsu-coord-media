@@ -34,6 +34,9 @@ export type ArticleSearchItem = {
   title: string;
   menuLabel: CategoryName;
   excerpt: string;
+  thumbnailImage: string;
+  thumbnailAlt: string;
+  tags: string[];
   searchText: string;
 };
 

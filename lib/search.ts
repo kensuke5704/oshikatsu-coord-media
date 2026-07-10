@@ -19,6 +19,9 @@ export function getArticleSearchIndex(): ArticleSearchItem[] {
     title: article.title,
     menuLabel: article.menuLabel,
     excerpt: article.excerpt,
+    thumbnailImage: article.thumbnailImage,
+    thumbnailAlt: article.thumbnailAlt,
+    tags: article.tags,
     searchText: [
       article.title,
       article.articleType,

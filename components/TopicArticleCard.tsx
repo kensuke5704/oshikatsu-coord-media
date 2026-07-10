@@ -23,12 +23,14 @@ export function TopicArticleCard({
         <ArticleVisual article={article} />
         <span className="topic-card-label">{article.menuLabel}</span>
       </Link>
-      <h3 className="mt-3 text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#e62f6d] sm:mt-4">
-        <Link href={`/articles/${article.slug}`}>{article.title}</Link>
-      </h3>
-      {article.tags[0] ? (
-        <p className="mt-2 text-[11px] font-black tracking-[0.08em] text-[#2f929b]">#{article.tags[0]}</p>
-      ) : null}
+      <div className="topic-card-copy">
+        <h3 className="mt-3 text-[15px] font-black leading-7 text-[#2b2522] transition group-hover:text-[#e62f6d] sm:mt-4">
+          <Link href={`/articles/${article.slug}`}>{article.title}</Link>
+        </h3>
+        {article.tags[0] ? (
+          <p className="mt-2 text-[11px] font-black tracking-[0.08em] text-[#2f929b]">#{article.tags[0]}</p>
+        ) : null}
+      </div>
     </article>
   );
 }

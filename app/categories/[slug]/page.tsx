@@ -34,6 +34,7 @@ export default async function CategoryPage({
   }
 
   const categoryArticles = getArticlesByCategory(category.slug);
+  const [leadArticle, ...restArticles] = categoryArticles;
   const categoryTags = Array.from(
     new Set(categoryArticles.flatMap((article) => article.tags).filter(Boolean)),
   ).slice(0, 8);
@@ -62,14 +63,16 @@ export default async function CategoryPage({
             ))}
           </div>
         ) : null}
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {categoryArticles.map((article) => (
-            <ArticleCard key={article.slug} article={article} />
-          ))}
-        </div>
-        {categoryArticles.length === 0 ? (
-          <div className="mt-8 rounded-[4px] border border-[#eadfda] bg-white p-8 text-sm font-bold text-[#746863]">
-            このカテゴリの記事は準備中です。
+        {leadArticle ? (
+          <div className="mt-10">
+            <ArticleCard article={leadArticle} priority />
+          </div>
+        ) : null}
+        {restArticles.length > 0 ? (
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {restArticles.map((article) => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
           </div>
         ) : null}
       </section>

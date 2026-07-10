@@ -149,6 +149,19 @@ a {
   transform: translateY(-4px);
 }
 
+.article-card-priority {
+  border-color: rgba(43, 37, 34, 0.14);
+  box-shadow: 0 18px 46px rgba(65, 45, 38, 0.07);
+}
+
+.article-card-priority .article-card-image {
+  min-height: 360px;
+}
+
+.article-card-priority .article-card-title {
+  max-width: 18em;
+}
+
 .article-visual {
   position: relative;
   width: 100%;
@@ -224,6 +237,10 @@ a {
   margin-top: 0.45rem;
   font-size: clamp(1rem, 2vw, 1.625rem);
   line-height: 1.35;
+}
+
+.archive-hero {
+  padding-top: 0.2rem;
 }
 
 .home-topic-title {
@@ -400,7 +417,7 @@ a {
 @media (min-width: 640px) {
   .topic-card-featured {
     grid-template-columns: minmax(220px, 0.48fr) minmax(0, 1fr);
-    align-items: end;
+    align-items: center;
     max-width: 780px;
   }
 
@@ -408,10 +425,14 @@ a {
     margin: 0;
   }
 
-  .topic-card-featured h3 {
+  .topic-card-featured .topic-card-copy h3 {
     margin-top: 0;
     font-size: clamp(1.25rem, 2.2vw, 1.75rem);
     line-height: 1.55;
+  }
+
+  .topic-card-featured .topic-card-copy p {
+    margin-top: 1.15rem;
   }
 }
 
@@ -457,6 +478,45 @@ a {
   border-color: rgba(43, 37, 34, 0.28);
   box-shadow: 0 16px 38px rgba(65, 45, 38, 0.09);
   transform: translateY(-3px);
+}
+
+.search-hero {
+  max-width: 680px;
+}
+
+.search-result-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(234, 223, 218, 0.86);
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(65, 45, 38, 0.045);
+  transition:
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms ease;
+}
+
+.search-result-card:hover {
+  border-color: rgba(43, 37, 34, 0.24);
+  box-shadow: 0 18px 42px rgba(65, 45, 38, 0.08);
+  transform: translateY(-2px);
+}
+
+.search-result-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #fff0f6;
+}
+
+.search-empty {
+  border-top: 1px solid rgba(43, 37, 34, 0.12);
+  padding-block: 2rem;
+  color: #746863;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.9;
 }
 
 .article-color-chip {
